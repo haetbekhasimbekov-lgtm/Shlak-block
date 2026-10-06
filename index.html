@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="ru" id="htmlRoot">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МОНОЛИТ-БЛОК | Завод и цех по производству шлакоблоков ГОСТ</title>
+    <meta name="description" content="Производство и прямая продажа качественных шлакоблоков от производителя. Стеновые и перегородочные блоки М75–М100. Доставка манипулятором в день заказа. Онлайн-калькулятор.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ВЕРХНЯЯ ИНФО-ПАЛИЕТКА -->
+    <div class="top-bar">
+        <div class="container top-bar__inner">
+            <div class="top-bar__item">
+                <span class="icon">📍</span>
+                <span>Промзона, Заводской проезд, склад №4 (Пн–Сб: 08:00–20:00)</span>
+            </div>
+            <div class="top-bar__item top-bar__item--highlight">
+                <span class="pulse-dot"></span>
+                <span>В наличии на складе: <strong>65 000+ блоков</strong> готовых к отгрузке</span>
+            </div>
+            <div class="top-bar__contacts">
+                <a href="tel:+79991234567" class="top-bar__phone">📞 +7 (999) 123-45-67</a>
+                <button class="btn-text-modal" onclick="openModal('Быстрая консультация')">Заказать звонок</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ШАПКА САЙТА (HEADER) -->
+    <header class="header" id="header">
+        <div class="container header__inner">
+            <a href="#" class="logo">
+                <div class="logo__icon">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+                        <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4h-6V6h6v2zm-8-2v2H5V6h6zm-6 4h6v2H5v-2zm8 0h6v2h-6v-2zm-8 4h6v2H5v-2zm8 0h6v2h-6v-2zm-8 4h6v2H5v-2zm8 0h6v2h-6v-2z"/>
+                    </svg>
+                </div>
+                <div class="logo__text">
+                    <span class="logo__title">МОНОЛИТ-БЛОК</span>
+                    <span class="logo__subtitle">ПРОИЗВОДСТВЕННЫЙ ЦЕХ №1</span>
+                </div>
+            </a>
+
+            <nav class="nav" id="mainNav">
+                <a href="#catalog" class="nav__link">Продукция</a>
+                <a href="#calculator" class="nav__link nav__link--accent">Калькулятор</a>
+                <a href="#advantages" class="nav__link">Преимущества</a>
+                <a href="#production" class="nav__link">Производство</a>
+                <a href="#delivery" class="nav__link">Доставка</a>
+                <a href="#reviews" class="nav__link">Отзывы</a>
+                <a href="#contacts" class="nav__link">Контакты</a>
+            </nav>
+
+            <div class="header__action">
+                <a href="#calculator" class="btn btn--outline btn--sm" data-ru="Рассчитать цену" data-uz="Narxni hisoblash">Рассчитать цену</a>
+                <!-- LANG SWITCHER -->
+                <div class="lang-switcher" id="langSwitcher">
+                    <button class="lang-btn active" id="langRU" onclick="switchLang('ru')">RU</button>
+                    <span class="lang-divider">|</span>
+                    <button class="lang-btn" id="langUZ" onclick="switchLang('uz')">UZ</button>
+                </div>
+                <button class="burger" id="burgerBtn" aria-label="Меню">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ГЛАВНЫЙ ЭКРАН (HERO) -->
+    <section class="hero">
+        <div class="hero__bg-overlay"></div>
+        <div class="container hero__container">
+            <div class="hero__content">
+                <div class="badge badge--glow">
+                    <span class="badge__dot"></span> Прямой производитель • Без посредников
+                </div>
+                <h1 class="hero__title">
+                    Производство шлакоблоков ГОСТ <br>
+                    <span class="text-gradient">с доставкой манипулятором</span> в день заказа
+                </h1>
+                <p class="hero__desc">
+                    Стеновые, перегородочные и усиленные блоки марки М75–М100 с идеальной геометрией (отклонение до 1 мм). Пропарочная камера полного цикла, набор марочной прочности 100%. Оплата по факту выгрузки на объекте.
+                </p>
+
+                <div class="hero__actions">
+                    <a href="#calculator" class="btn btn--primary btn--lg">
+                        <span>Рассчитать стоимость онлайн</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                    <a href="#catalog" class="btn btn--glass btn--lg">Смотреть каталог и цены</a>
+                </div>
+
+                <div class="hero__stats">
+                    <div class="stat-item">
+                        <span class="stat-item__num">от 190 ₸</span>
+                        <span class="stat-item__label">Оптовая цена за штуку</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-item__num">М75 - М100</span>
+                        <span class="stat-item__label">Сертифицированная прочность</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-item__num">до 12 000 шт.</span>
+                        <span class="stat-item__label">Суточная мощность цеха</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-item__num">0 ₸</span>
+                        <span class="stat-item__label">Оплата только при получении</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero__card-preview">
+                <div class="preview-card">
+                    <div class="preview-card__tag">В наличии 65 000 шт.</div>
+                    <img src="assets/images/block-product.jpg" alt="Шлакоблок четырехпустотный стеновой ГОСТ" class="preview-card__img">
+                    <div class="preview-card__info">
+                        <h3>Стеновой 4-х пустотный М75</h3>
+                        <p class="preview-card__dims">390 × 190 × 190 мм • Вес: 18.5 кг</p>
+                        <div class="preview-card__price-row">
+                            <div>
+                                <span class="old-price">225 ₸</span>
+                                <span class="current-price">195 ₸ / шт.</span>
+                            </div>
+                            <button class="btn btn--primary btn--sm" onclick="openOrderModal('Стеновой 4-х пустотный М75', 39)">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРЕИМУЩЕСТВА ЦЕХА -->
+    <section class="section section--dark" id="advantages">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">ПОЧЕМУ ВЫБИРАЮТ НАШ ЦЕХ</span>
+                <h2 class="section-title">Качество, за которое мы отвечаем репутацией</h2>
+                <p class="section-subtitle">Мы не гаражное производство — работаем на автоматизированной линии с пропарочными камерами и собственной лабораторией.</p>
+            </div>
+
+            <div class="grid grid--3">
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    </div>
+                    <h3 class="feature-card__title">Идеальная геометрия (±1 мм)</h3>
+                    <p class="feature-card__text">
+                        Формовка на вибропрессе с усилием 160 тонн. Ровные грани экономят до 40% кладочного раствора и ускоряют работу каменщиков в 2 раза.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M12 2c1.1 0 2 .9 2 2v1.1c3.05.48 5.4 3.03 5.4 6.15 0 2.1-.98 4-2.52 5.17l-.88.68V20h-8v-2.82l-.88-.68C5.58 15.24 4.6 13.34 4.6 11.25c0-3.12 2.35-5.67 5.4-6.15V4c0-1.1.9-2 2-2zm0 13c1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3 1.34 3 3 3z"/></svg>
+                    </div>
+                    <h3 class="feature-card__title">Пропарочная камера 70°C</h3>
+                    <p class="feature-card__text">
+                        Блоки набирают 75% проектной прочности уже через 24 часа в горячем пару. Они не осыпаются, не крошатся и готовы к кладке сразу после доставки.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                    </div>
+                    <h3 class="feature-card__title">Цемент марки ПЦ-500 Д0</h3>
+                    <p class="feature-card__text">
+                        Используем только чистый цемент без шлаковых примесей и гранитный отсев фракции 0-5 мм. Сертификаты и паспорт качества на каждую партию.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-2 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
+                    </div>
+                    <h3 class="feature-card__title">Свой автопарк манипуляторов</h3>
+                    <p class="feature-card__text">
+                        5 собственных грузовиков с гидроманипуляторами (г/п стрелы до 3 т, кузова 10-20 т). Аккуратная разгрузка прямо к фундаменту вашего объекта.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.96.76 1.58V19z"/></svg>
+                    </div>
+                    <h3 class="feature-card__title">Честный объем и без боя</h3>
+                    <p class="feature-card__text">
+                        Упаковка на деревянные поддоны со стрейч-пленкой и стреппинг-лентой. Если при разгрузке разобьется хоть один блок — меняем за наш счет.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card__icon">
+                        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                    </div>
+                    <h3 class="feature-card__title">Оплата по факту</h3>
+                    <p class="feature-card__text">
+                        Никаких скрытых платежей или предоплат для частных лиц. Проверяете качество и количество на месте, затем оплачиваете наличными или картой.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР БЛОКОВ -->
+    <section class="section section--calculator" id="calculator">
+        <div class="container">
+            <div class="calculator-wrapper">
+                <div class="calculator-header">
+                    <div class="badge badge--yellow">ТОЧНЫЙ РАСЧЕТ ЗА 30 СЕКУНД</div>
+                    <h2 class="calculator-title">Калькулятор расчета шлакоблоков и стоимости</h2>
+                    <p class="calculator-subtitle">Рассчитайте точное количество блоков, число поддонов, вес для доставки и итоговую сумму со скидкой от объема.</p>
+                </div>
+
+                <div class="calculator-grid">
+                    <!-- ПАРАМЕТРЫ РАСЧЕТА -->
+                    <div class="calculator-controls">
+                        <div class="calc-group">
+                            <label class="calc-label">1. Выберите тип блока:</label>
+                            <div class="calc-type-selector" id="blockTypeSelector">
+                                <button type="button" class="type-btn active" data-type="wall4" data-price="39" data-weight="18.5" data-pallete="72">
+                                    <span class="type-btn__title">Стеновой 4-х пустотный</span>
+                                    <span class="type-btn__sub">390×190×190 мм • 195 ₸/шт</span>
+                                </button>
+                                <button type="button" class="type-btn" data-type="wall2" data-price="41" data-weight="20" data-pallete="72">
+                                    <span class="type-btn__title">Стеновой 2-х пустотный</span>
+                                    <span class="type-btn__sub">390×190×190 мм • 205 ₸/шт</span>
+                                </button>
+                                <button type="button" class="type-btn" data-type="solid" data-price="55" data-weight="26" data-pallete="60">
+                                    <span class="type-btn__title">Полнотелый усиленный</span>
+                                    <span class="type-btn__sub">390×190×190 мм • 275 ₸/шт</span>
+                                </button>
+                                <button type="button" class="type-btn" data-type="partition" data-price="29" data-weight="10" data-pallete="144">
+                                    <span class="type-btn__title">Перегородочный полублок</span>
+                                    <span class="type-btn__sub">390×90×190 мм • 145 ₸/шт</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="calc-group">
+                            <label class="calc-label">2. Способ расчета:</label>
+                            <div class="calc-tabs">
+                                <button type="button" class="calc-tab active" id="tabWalls" onclick="switchCalcMode('walls')">По размерам стен (здания)</button>
+                                <button type="button" class="calc-tab" id="tabQty" onclick="switchCalcMode('qty')">По количеству штук</button>
+                            </div>
+                        </div>
+
+                        <!-- РЕЖИМ 1: ПО СТЕНАМ -->
+                        <div id="modeWalls" class="calc-mode-content">
+                            <div class="calc-inputs-row">
+                                <div class="calc-field">
+                                    <label>Общая длина стен (м):</label>
+                                    <input type="number" id="inputLength" value="40" min="1" step="0.5">
+                                    <span class="field-hint">Например, дом 10×10 м = 40 м</span>
+                                </div>
+                                <div class="calc-field">
+                                    <label>Высота стен (м):</label>
+                                    <input type="number" id="inputHeight" value="3.0" min="1" max="15" step="0.1">
+                                    <span class="field-hint">Стандартно 2.8 - 3.0 м</span>
+                                </div>
+                            </div>
+                            <div class="calc-inputs-row">
+                                <div class="calc-field">
+                                    <label>Толщина кладки:</label>
+                                    <select id="inputThickness">
+                                        <option value="190" selected>В полблока (190 мм) — для хозпостроек, гаражей, заборов</option>
+                                        <option value="390">В 1 блок (390 мм) — для теплых домов, складов</option>
+                                    </select>
+                                </div>
+                                <div class="calc-field">
+                                    <label>Площадь окон и дверей (м²):</label>
+                                    <input type="number" id="inputOpenings" value="15" min="0" step="0.5">
+                                    <span class="field-hint">Вычитается из объема стен</span>
+                                </div>
+                            </div>
+                            <div class="calc-checkbox-wrap">
+                                <label class="custom-checkbox">
+                                    <input type="checkbox" id="inputMargin" checked>
+                                    <span class="checkmark"></span>
+                                    Запас 5% на подрезку и бой (рекомендуется мастерами)
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- РЕЖИМ 2: ПО ШТУКАМ -->
+                        <div id="modeQty" class="calc-mode-content" style="display: none;">
+                            <div class="calc-field">
+                                <label>Необходимое количество блоков (шт):</label>
+                                <input type="number" id="inputDirectQty" value="1500" min="50" step="10">
+                                <span class="field-hint">Укажите нужное вам число блоков</span>
+                            </div>
+                        </div>
+
+                        <div class="calc-group">
+                            <label class="calc-label">3. Доставка:</label>
+                            <div class="delivery-options">
+                                <label class="radio-card">
+                                    <input type="radio" name="calcDelivery" value="manipulator" checked>
+                                    <span class="radio-card__box">
+                                        <strong>Манипулятор цеха (с выгрузкой)</strong>
+                                        <small>По городу и области, точный расчет логистом</small>
+                                    </span>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="calcDelivery" value="pickup">
+                                    <span class="radio-card__box">
+                                        <strong>Самовывоз со склада цеха</strong>
+                                        <small>Бесплатная погрузка погрузчиком на поддонах</small>
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- РЕЗУЛЬТАТ РАСЧЕТА -->
+                    <div class="calculator-result-box">
+                        <div class="result-box__header">
+                            <h3>Смета и параметры заказа</h3>
+                            <span class="badge badge--green" id="discountBadge">Скидка за объем: 5%</span>
+                        </div>
+
+                        <div class="result-list">
+                            <div class="result-row">
+                                <span class="result-row__name">Количество блоков:</span>
+                                <span class="result-row__val" id="resTotalBlocks">1 445 шт.</span>
+                            </div>
+                            <div class="result-row">
+                                <span class="result-row__name">Количество поддонов:</span>
+                                <span class="result-row__val" id="resPallets">21 паллет</span>
+                            </div>
+                            <div class="result-row">
+                                <span class="result-row__name">Общий объем кладки:</span>
+                                <span class="result-row__val" id="resVolume">20.8 м³</span>
+                            </div>
+                            <div class="result-row">
+                                <span class="result-row__name">Примерный вес груза:</span>
+                                <span class="result-row__val" id="resWeight">26.7 тонн</span>
+                            </div>
+                            <div class="result-row">
+                                <span class="result-row__name">Потребность транспорта:</span>
+                                <span class="result-row__val" id="resTrucks">2 рейса (15т)</span>
+                            </div>
+                            <div class="result-divider"></div>
+                            <div class="result-row result-row--price">
+                                <div>
+                                    <span class="result-total-label">Итоговая стоимость:</span>
+                                    <small id="resSavings" class="text-success">Ваша выгода: 14090 ₸</small>
+                                </div>
+                                <span class="result-total-val" id="resTotalPrice">267690 ₸</span>
+                            </div>
+                        </div>
+
+                        <div class="result-box__action">
+                            <button type="button" class="btn btn--primary btn--full btn--lg" onclick="orderFromCalculator()">
+                                <span>Зафиксировать цену со скидкой</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </button>
+                            <p class="calc-security-note">
+                                🔒 Фиксация цены действует 14 дней. Никакой предоплаты!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- КАТАЛОГ ПРОДУКЦИИ -->
+    <section class="section" id="catalog">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">АССОРТИМЕНТ ПРОДУКЦИИ</span>
+                <h2 class="section-title">Каталог шлакоблоков от производителя</h2>
+                <p class="section-subtitle">Вся продукция изготовлена методом полусухого объемного вибропрессования в строгом соответствии с ГОСТ 6133-99.</p>
+            </div>
+
+            <!-- ФИЛЬТРЫ КАТАЛОГА -->
+            <div class="catalog-filters">
+                <button class="filter-btn active" onclick="filterCatalog('all', this)">Все виды блоков</button>
+                <button class="filter-btn" onclick="filterCatalog('wall', this)">Стеновые (390×190×190)</button>
+                <button class="filter-btn" onclick="filterCatalog('partition', this)">Перегородочные (390×90×190)</button>
+                <button class="filter-btn" onclick="filterCatalog('heavy', this)">Фундаментные и усиленные</button>
+            </div>
+
+            <div class="catalog-grid" id="catalogGrid">
+                <!-- Карточка 1 -->
+                <div class="product-card" data-category="wall">
+                    <div class="product-card__badge product-card__badge--hit">ХИТ ПРОДАЖ</div>
+                    <div class="product-card__img-wrap">
+                        <img src="assets/images/block-product.jpg" alt="Шлакоблок стеновой 4-х пустотный">
+                    </div>
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Шлакоблок стеновой 4-х пустотный</h3>
+                        <div class="product-card__specs">
+                            <div class="spec-row"><span>Размер:</span><strong>390 × 190 × 190 мм</strong></div>
+                            <div class="spec-row"><span>Марка прочности:</span><strong>М75 - М100</strong></div>
+                            <div class="spec-row"><span>Пустотность:</span><strong>30% (теплосберегающий)</strong></div>
+                            <div class="spec-row"><span>Вес блока:</span><strong>18.5 кг</strong></div>
+                            <div class="spec-row"><span>На поддоне:</span><strong>72 шт. (1 332 кг)</strong></div>
+                            <div class="spec-row"><span>Морозостойкость:</span><strong>F50 (от 50 циклов)</strong></div>
+                        </div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price">
+                                <span class="price-val">195 ₸</span>
+                                <span class="price-unit">/ шт. (14040 ₸/поддон)</span>
+                            </div>
+                            <button class="btn btn--primary btn--sm" onclick="openOrderModal('Стеновой 4-х пустотный (390х190х190)', 39)">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 2 -->
+                <div class="product-card" data-category="wall">
+                    <div class="product-card__badge">ОПТИМАЛЬНЫЙ</div>
+                    <div class="product-card__img-wrap">
+                        <img src="assets/images/block-product.jpg" alt="Шлакоблок стеновой 2-х пустотный усиленный">
+                    </div>
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Шлакоблок стеновой 2-х пустотный</h3>
+                        <div class="product-card__specs">
+                            <div class="spec-row"><span>Размер:</span><strong>390 × 190 × 190 мм</strong></div>
+                            <div class="spec-row"><span>Марка прочности:</span><strong>М100</strong></div>
+                            <div class="spec-row"><span>Пустотность:</span><strong>40% (толстые стенки)</strong></div>
+                            <div class="spec-row"><span>Вес блока:</span><strong>20.0 кг</strong></div>
+                            <div class="spec-row"><span>На поддоне:</span><strong>72 шт. (1 440 кг)</strong></div>
+                            <div class="spec-row"><span>Морозостойкость:</span><strong>F50</strong></div>
+                        </div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price">
+                                <span class="price-val">205 ₸</span>
+                                <span class="price-unit">/ шт. (14760 ₸/поддон)</span>
+                            </div>
+                            <button class="btn btn--primary btn--sm" onclick="openOrderModal('Стеновой 2-х пустотный (390х190х190)', 41)">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 3 -->
+                <div class="product-card" data-category="heavy">
+                    <div class="product-card__badge product-card__badge--accent">ПОВЫШЕННАЯ ПРОЧНОСТЬ</div>
+                    <div class="product-card__img-wrap">
+                        <img src="assets/images/block-product.jpg" alt="Шлакоблок полнотелый фундаментный">
+                    </div>
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Шлакоблок полнотелый (фундаментный)</h3>
+                        <div class="product-card__specs">
+                            <div class="spec-row"><span>Размер:</span><strong>390 × 190 × 190 мм</strong></div>
+                            <div class="spec-row"><span>Марка прочности:</span><strong>М100 - М125</strong></div>
+                            <div class="spec-row"><span>Пустотность:</span><strong>0% (монолитный)</strong></div>
+                            <div class="spec-row"><span>Вес блока:</span><strong>26.0 кг</strong></div>
+                            <div class="spec-row"><span>На поддоне:</span><strong>60 шт. (1 560 кг)</strong></div>
+                            <div class="spec-row"><span>Назначение:</span><strong>Цоколи, фундаменты, опоры</strong></div>
+                        </div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price">
+                                <span class="price-val">275 ₸</span>
+                                <span class="price-unit">/ шт. (16500 ₸/поддон)</span>
+                            </div>
+                            <button class="btn btn--primary btn--sm" onclick="openOrderModal('Полнотелый фундаментный (390х190х190)', 55)">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 4 -->
+                <div class="product-card" data-category="partition">
+                    <div class="product-card__badge">ДЛЯ ПЕРЕГОРОДОК</div>
+                    <div class="product-card__img-wrap">
+                        <img src="assets/images/block-product.jpg" alt="Шлакоблок перегородочный полублок">
+                    </div>
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Шлакоблок перегородочный (полублок)</h3>
+                        <div class="product-card__specs">
+                            <div class="spec-row"><span>Размер:</span><strong>390 × 90 × 190 мм</strong></div>
+                            <div class="spec-row"><span>Марка прочности:</span><strong>М50 - М75</strong></div>
+                            <div class="spec-row"><span>Пустотность:</span><strong>Пустотелый 2-х щелевой</strong></div>
+                            <div class="spec-row"><span>Вес блока:</span><strong>10.0 кг</strong></div>
+                            <div class="spec-row"><span>На поддоне:</span><strong>144 шт. (1 440 кг)</strong></div>
+                            <div class="spec-row"><span>Шумоизоляция:</span><strong>Высокая (до 48 дБ)</strong></div>
+                        </div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price">
+                                <span class="price-val">145 ₸</span>
+                                <span class="price-unit">/ шт. (20880 ₸/поддон)</span>
+                            </div>
+                            <button class="btn btn--primary btn--sm" onclick="openOrderModal('Перегородочный полублок (390х90х190)', 29)">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 5 -->
+                <div class="product-card" data-category="wall">
+                    <div class="product-card__badge">ТЕПЛЫЙ</div>
+                    <div class="product-card__img-wrap">
+                        <img src="assets/images/block-product.jpg" alt="Керамзитобетонный блок">
+                    </div>
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Керамзитобетонный блок теплый</h3>
+                        <div class="product-card__specs">
+                            <div class="spec-row"><span>Размер:</span><strong>390 × 190 × 190 мм</strong></div>
+                            <div class="spec-row"><span>Марка прочности:</span><strong>М50 - М75</strong></div>
+                            <div class="spec-row"><span>Теплопроводность:</span><strong>0.18 Вт/(м·°С)</strong></div>
+                            <div class="spec-row"><span>Вес блока:</span><strong>13.5 кг (легкий)</strong></div>
+                            <div class="spec-row"><span>На поддоне:</span><strong>72 шт. (972 кг)</strong></div>
+                            <div class="spec-row"><span>Экологичность:</span><strong>100% природная глина</strong></div>
+                        </div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price">
+                                <span class="price-val">290 ₸</span>
+                                <span class="price-unit">/ шт. (20880 ₸/поддон)</span>
+                            </div>
+                            <button class="btn btn--primary btn--sm" onclick="openOrderModal('Керамзитобетонный блок (390х190х190)', 58)">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Карточка 6 -->
+                <div class="product-card" data-category="heavy">
+                    <div class="product-card__badge">ЭСТЕТИКА</div>
+                    <div class="product-card__img-wrap">
+                        <img src="assets/images/block-product.jpg" alt="Декоративный заборный колотый блок">
+                    </div>
+                    <div class="product-card__content">
+                        <h3 class="product-card__title">Декоративный блок «Рваный камень»</h3>
+                        <div class="product-card__specs">
+                            <div class="spec-row"><span>Размер:</span><strong>390 × 190 × 190 мм</strong></div>
+                            <div class="spec-row"><span>Фактура:</span><strong>Колотая лицевая грань</strong></div>
+                            <div class="spec-row"><span>Марка прочности:</span><strong>М100</strong></div>
+                            <div class="spec-row"><span>Вес блока:</span><strong>21.0 кг</strong></div>
+                            <div class="spec-row"><span>Назначение:</span><strong>Заборы, цоколи, фасады</strong></div>
+                            <div class="spec-row"><span>Цвета:</span><strong>Серый, графит, шоколад</strong></div>
+                        </div>
+                        <div class="product-card__footer">
+                            <div class="product-card__price">
+                                <span class="price-val">325 ₸</span>
+                                <span class="price-unit">/ шт. (23400 ₸/поддон)</span>
+                            </div>
+                            <button class="btn btn--primary btn--sm" onclick="openOrderModal('Декоративный рваный камень (390х190х190)', 65)">Заказать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СРАВНИТЕЛЬНАЯ ТАБЛИЦА ГОСТ -->
+    <section class="section section--dark">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">ТЕХНИЧЕСКИЕ ДАННЫЕ</span>
+                <h2 class="section-title">Сравнение характеристик блоков по ГОСТ 6133-99</h2>
+                <p class="section-subtitle">Официальные показатели лабораторных испытаний каждой партии нашего завода.</p>
+            </div>
+
+            <div class="table-responsive">
+                <table class="specs-table">
+                    <thead>
+                        <tr>
+                            <th>Тип блока</th>
+                            <th>Размеры (мм)</th>
+                            <th>Пустотность</th>
+                            <th>Марка прочности</th>
+                            <th>Морозостойкость</th>
+                            <th>Вес (кг)</th>
+                            <th>В поддоне (шт)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Стеновой 4-х пустотный</strong></td>
+                            <td>390 × 190 × 190</td>
+                            <td>30%</td>
+                            <td><span class="badge-table">М75 - М100</span></td>
+                            <td>F50</td>
+                            <td>18.5 кг</td>
+                            <td>72</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Стеновой 2-х пустотный</strong></td>
+                            <td>390 × 190 × 190</td>
+                            <td>40%</td>
+                            <td><span class="badge-table">М100</span></td>
+                            <td>F50</td>
+                            <td>20.0 кг</td>
+                            <td>72</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Полнотелый фундаментный</strong></td>
+                            <td>390 × 190 × 190</td>
+                            <td>0% (сплошной)</td>
+                            <td><span class="badge-table badge-table--high">М100 - М125</span></td>
+                            <td>F75</td>
+                            <td>26.0 кг</td>
+                            <td>60</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Перегородочный (полублок)</strong></td>
+                            <td>390 × 90 × 190</td>
+                            <td>35%</td>
+                            <td><span class="badge-table">М75</span></td>
+                            <td>F35</td>
+                            <td>10.0 кг</td>
+                            <td>144</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Керамзитобетонный стеновой</strong></td>
+                            <td>390 × 190 × 190</td>
+                            <td>30%</td>
+                            <td><span class="badge-table">М50 - М75</span></td>
+                            <td>F50</td>
+                            <td>13.5 кг</td>
+                            <td>72</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПРОЦЕСС ПРОИЗВОДСТВА В ЦЕХЕ -->
+    <section class="section" id="production">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">ТЕХНОЛОГИЯ ЦЕХА</span>
+                <h2 class="section-title">Как мы производим надежные блоки</h2>
+                <p class="section-subtitle">От правильной технологии вибропрессования зависит, простоит ли ваш дом 70 лет без трещин.</p>
+            </div>
+
+            <div class="process-banner">
+                <img src="assets/images/factory-hero.jpg" alt="Автоматизированный цех производства шлакоблоков" class="process-banner__img">
+                <div class="process-banner__overlay">
+                    <span class="badge badge--yellow">ЦЕХ ПОЛНОГО ЦИКЛА</span>
+                    <h3>Автоматизированная вибропрессовальная линия «BLOCKMASTER»</h3>
+                    <p>Компьютерное дозирование цемента, воды и фракционного наполнителя исключает человеческий фактор.</p>
+                </div>
+            </div>
+
+            <div class="grid grid--4 process-steps">
+                <div class="step-card">
+                    <div class="step-card__num">01</div>
+                    <h4>Подготовка сырья</h4>
+                    <p>Отмытый гранитный отсев 0-5 мм и портландцемент М500. Жесткая смесь без глины и мусора.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-card__num">02</div>
+                    <h4>Вибропрессование</h4>
+                    <p>Прессование в матрице под давлением 160 атмосфер с высокочастотной вибрацией для максимальной плотности.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-card__num">03</div>
+                    <h4>Пропарочная камера</h4>
+                    <p>Термовлажностная обработка паром при 70°C. Блок набирает марочную прочность за 24 часа вместо 28 дней.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-card__num">04</div>
+                    <h4>Контроль ОТК и склад</h4>
+                    <p>Замер диагоналей, тест на прессе, упаковка на европоддоны в стрейч-пленку для бережной доставки.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ДОСТАВКА И ЛОГИСТИКА -->
+    <section class="section section--dark" id="delivery">
+        <div class="container">
+            <div class="delivery-box">
+                <div class="delivery-info">
+                    <span class="section-tag">СОБСТВЕННЫЙ АВТОПАРК</span>
+                    <h2 class="section-title">Быстрая доставка манипулятором в день заказа</h2>
+                    <p class="section-subtitle">Разгрузим поддоны прямо на вашей стройплощадке или поднимем на перекрытия второго этажа.</p>
+
+                    <div class="delivery-perks">
+                        <div class="perk-row">
+                            <span class="perk-check">✓</span>
+                            <div>
+                                <strong>Манипуляторы 5т, 10т и 20т</strong>
+                                <p>Подберем машину под узкие улицы СНТ или крупные строительные объекты.</p>
+                            </div>
+                        </div>
+                        <div class="perk-row">
+                            <span class="perk-check">✓</span>
+                            <div>
+                                <strong>Бережная выгрузка стрелой</strong>
+                                <p>Никаких сбросов самосвалом — блоки не бьются и не царапаются.</p>
+                            </div>
+                        </div>
+                        <div class="perk-row">
+                            <span class="perk-check">✓</span>
+                            <div>
+                                <strong>Самовывоз 6 дней в неделю</strong>
+                                <p>Бесплатная и быстрая погрузка вилочным автопогрузчиком за 15 минут.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="delivery-calc-cta">
+                        <p>Узнайте точную стоимость доставки до вашего населенного пункта:</p>
+                        <button class="btn btn--primary btn--md" onclick="openModal('Расчет стоимости доставки')">Рассчитать доставку</button>
+                    </div>
+                </div>
+
+                <div class="delivery-fleet">
+                    <div class="truck-card">
+                        <div class="truck-card__head">
+                            <span class="truck-badge">МАЛЫЙ МАНИПУЛЯТОР</span>
+                            <h4>КАМАЗ / ISUZU (до 5 тонн)</h4>
+                        </div>
+                        <p class="truck-capacity">Вместимость: <strong>до 250 блоков (3–4 поддона)</strong></p>
+                        <p class="truck-desc">Идеально для пристроек, гаражей, заборов и узких проездов.</p>
+                    </div>
+
+                    <div class="truck-card truck-card--active">
+                        <div class="truck-card__head">
+                            <span class="truck-badge truck-badge--popular">САМЫЙ ВОСТРЕБОВАННЫЙ</span>
+                            <h4>МАЗ / КАМАЗ (до 10–12 тонн)</h4>
+                        </div>
+                        <p class="truck-capacity">Вместимость: <strong>до 650 блоков (8–9 поддонов)</strong></p>
+                        <p class="truck-desc">Оптимален для строительства 1-го этажа дома или хозблока.</p>
+                    </div>
+
+                    <div class="truck-card">
+                        <div class="truck-card__head">
+                            <span class="truck-badge">ТЯЖЕЛЫЙ МАНИПУЛЯТОР</span>
+                            <h4>ДЛИННОМЕР (до 20–25 тонн)</h4>
+                        </div>
+                        <p class="truck-capacity">Вместимость: <strong>до 1 300 блоков (18 поддонов)</strong></p>
+                        <p class="truck-desc">Для масштабных строительств и оптовых поставок по минимальному тарифу.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ОТЗЫВЫ КЛИЕНТОВ -->
+    <section class="section" id="reviews">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">РЕАЛЬНЫЙ ОПЫТ</span>
+                <h2 class="section-title">Что говорят строители и заказчики</h2>
+                <p class="section-subtitle">Более 1 200 построенных объектов за 7 лет работы цеха.</p>
+            </div>
+
+            <div class="grid grid--3">
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <div class="review-avatar">АН</div>
+                        <div>
+                            <h4 class="review-author">Алексей Новиков</h4>
+                            <span class="review-status">Прораб, строительная бригада</span>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">
+                        «Берем в этом цехе уже третий сезон подряд. Главное преимущество — геометрия. Швы получаются ровные, до 8 мм, раствора уходит минимум. Блоки крепкие, не ломаются при переноске. Водитель манипулятора мастерски поставил поддоны прямо в периметр фундамента.»
+                    </p>
+                    <div class="review-object">Объект: Коттедж 160 м² (2 800 блоков)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <div class="review-avatar">БК</div>
+                        <div>
+                            <h4 class="review-author">Бахром Каримов</h4>
+                            <span class="review-status">Частный застройщик</span>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">
+                        «Строил гараж с мансардой. Позвонил в 9 утра, менеджер помог посчитать по размерам через калькулятор. В 14:00 машина уже разгружалась у меня на участке. Оплатил водителю после осмотра. Блоки свежие, звонкие при постукивании, прочность отличная!»
+                    </p>
+                    <div class="review-object">Объект: Гараж 7х9 м (950 блоков)</div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-card__header">
+                        <div class="review-avatar">СВ</div>
+                        <div>
+                            <h4 class="review-author">Сергей Васильев</h4>
+                            <span class="review-status">Генподрядчик складского комплекса</span>
+                        </div>
+                    </div>
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">
+                        «Заказывали крупную партию полнотелых и 4-х пустотных блоков (14 000 штук). Цех выдержал график день в день. Приложили паспорта качества и протоколы испытаний. Никакого боя в поддонах. Рекомендую как надежного прямого производителя.»
+                    </p>
+                    <div class="review-object">Объект: Ангар-склад 450 м² (14 000 блоков)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ГАЛЕРЕЯ ОБЪЕКТОВ И СЕРТИФИКАТЫ -->
+    <section class="section" id="gallery">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag" data-ru="НАШИ РАБОТЫ" data-uz="BIZNING ISHLARIMIZ">НАШИ РАБОТЫ</span>
+                <h2 class="section-title" data-ru="Построенные объекты и сертификаты качества" data-uz="Qurilgan ob'ektlar va sifat sertifikatlari">Построенные объекты и сертификаты качества</h2>
+                <p class="section-subtitle" data-ru="Более 1 200 реализованных проектов — от частных домов до промышленных складов. Вся продукция сертифицирована по ГОСТ." data-uz="1 200 dan ortiq amalga oshirilgan loyihalar — xususiy uylardan tortib sanoat omborlarigacha. Barcha mahsulotlar GOST bo'yicha sertifikatlangan.">Более 1 200 реализованных проектов — от частных домов до промышленных складов. Вся продукция сертифицирована по ГОСТ.</p>
+            </div>
+
+            <!-- Фильтры галереи -->
+            <div class="gallery-tabs">
+                <button class="gallery-tab active" onclick="filterGallery('all', this)" data-ru="Все объекты" data-uz="Barcha ob'ektlar">Все объекты</button>
+                <button class="gallery-tab" onclick="filterGallery('house', this)" data-ru="Жилые дома" data-uz="Turar-joy uylari">Жилые дома</button>
+                <button class="gallery-tab" onclick="filterGallery('commercial', this)" data-ru="Коммерческие" data-uz="Tijorat binolari">Коммерческие</button>
+                <button class="gallery-tab" onclick="filterGallery('factory', this)" data-ru="Производство" data-uz="Ishlab chiqarish">Производство</button>
+                <button class="gallery-tab" onclick="filterGallery('cert', this)" data-ru="Сертификаты" data-uz="Sertifikatlar">Сертификаты</button>
+            </div>
+
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Объект 1 -->
+                <div class="gallery-item" data-gallery-cat="house" onclick="openLightbox(0)">
+                    <img src="assets/images/gallery_house.jpg" alt="Жилой дом 200м² из шлакоблока" class="gallery-item__img" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <div class="gallery-item__info">
+                            <span class="gallery-item__cat" data-ru="Жилой дом" data-uz="Turar-joy uyi">Жилой дом</span>
+                            <h4 data-ru="Коттедж 200 м², Алматы» data-uz="Kotteдж 200 м², Olmaota">Коттедж 200 м², Алматы</h4>
+                            <p data-ru="4 200 блоков стеновых М75" data-uz="4 200 dona M75 devoriy blok">4 200 блоков стеновых М75</p>
+                        </div>
+                        <div class="gallery-item__zoom">🔍</div>
+                    </div>
+                </div>
+
+                <!-- Объект 2 -->
+                <div class="gallery-item gallery-item--wide" data-gallery-cat="commercial" onclick="openLightbox(1)">
+                    <img src="assets/images/gallery_garage.jpg" alt="Гараж-мастерская из шлакоблока" class="gallery-item__img" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <div class="gallery-item__info">
+                            <span class="gallery-item__cat" data-ru="Гараж / Мастерская" data-uz="Garaj / Ustaxona">Гараж / Мастерская</span>
+                            <h4 data-ru="Гараж-мастерская 18×9 м" data-uz="Garaj-ustaxona 18×9 м">Гараж-мастерская 18×9 м</h4>
+                            <p data-ru="1 800 блоков 4-х пустотных" data-uz="1 800 dona 4 bo'shliqli blok">1 800 блоков 4-х пустотных</p>
+                        </div>
+                        <div class="gallery-item__zoom">🔍</div>
+                    </div>
+                </div>
+
+                <!-- Объект 3 -->
+                <div class="gallery-item" data-gallery-cat="factory" onclick="openLightbox(2)">
+                    <img src="assets/images/gallery_factory.jpg" alt="Производство шлакоблоков, цех" class="gallery-item__img" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <div class="gallery-item__info">
+                            <span class="gallery-item__cat" data-ru="Наш цех" data-uz="Bizning sex">Наш цех</span>
+                            <h4 data-ru="Автоматизированная вибропрессовая линия" data-uz="Avtomatlashtirilgan vibropress liniyasi">Автоматизированная вибропрессовая линия</h4>
+                            <p data-ru="12 000 блоков в сутки" data-uz="Sutkasiga 12 000 dona blok">12 000 блоков в сутки</p>
+                        </div>
+                        <div class="gallery-item__zoom">🔍</div>
+                    </div>
+                </div>
+
+                <!-- Объект 4 -->
+                <div class="gallery-item" data-gallery-cat="commercial" onclick="openLightbox(3)">
+                    <img src="assets/images/gallery_warehouse.jpg" alt="Склад из шлакоблока" class="gallery-item__img" loading="lazy">
+                    <div class="gallery-item__overlay">
+                        <div class="gallery-item__info">
+                            <span class="gallery-item__cat" data-ru="Склад / Ангар" data-uz="Ombor / Angar">Склад / Ангар</span>
+                            <h4 data-ru="Логистический склад 1 200 м²" data-uz="Logistika ombori 1 200 м²">Логистический склад 1 200 м²</h4>
+                            <p data-ru="14 000 полнотелых блоков М100" data-uz="14 000 dona to'la M100 blok">14 000 полнотелых блоков М100</p>
+                        </div>
+                        <div class="gallery-item__zoom">🔍</div>
+                    </div>
+                </div>
+
+                <!-- Сертификат 1 -->
+                <div class="gallery-item gallery-item--cert" data-gallery-cat="cert" onclick="openLightbox(4)">
+                    <div class="cert-card">
+                        <div class="cert-card__icon">📋</div>
+                        <div class="cert-card__content">
+                            <h4 class="cert-card__title" data-ru="Паспорт качества ГОСТ 6133-99" data-uz="GOST 6133-99 sifat pasporti">Паспорт качества ГОСТ 6133-99</h4>
+                            <p class="cert-card__desc" data-ru="Лабораторный протокол испытания на прочность, морозостойкость и геометрию каждой партии." data-uz="Har bir partiya uchun mustahkamlik, sovuqqa chidamlilik va geometriyaga sinov laboratoriya bayonnomasi.">Лабораторный протокол испытания на прочность, морозостойкость и геометрию каждой партии.</p>
+                            <span class="cert-card__badge" data-ru="Действующий" data-uz="Amalda">Действующий ✓</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Сертификат 2 -->
+                <div class="gallery-item gallery-item--cert" data-gallery-cat="cert" onclick="openLightbox(5)">
+                    <div class="cert-card">
+                        <div class="cert-card__icon">🏆</div>
+                        <div class="cert-card__content">
+                            <h4 class="cert-card__title" data-ru="Сертификат соответствия» data-uz="Muvofiqlik sertifikati">Сертификат соответствия</h4>
+                            <p class="cert-card__desc" data-ru="Продукция прошла добровольную сертификацию в независимой аккредитованной лаборатории." data-uz="Mahsulot mustaqil akkreditatsiyalangan laboratoriyada ixtiyoriy sertifikatsiyadan o'tdi.">Продукция прошла добровольную сертификацию в независимой аккредитованной лаборатории.</p>
+                            <span class="cert-card__badge" data-ru="Действующий" data-uz="Amalda">Действующий ✓</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ (FAQ) -->
+    <section class="section section--dark" id="faq">
+        <div class="container container--narrow">
+            <div class="section-header text-center">
+                <span class="section-tag">ВОПРОСЫ И ОТВЕТЫ</span>
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+                <p class="section-subtitle">Все, что нужно знать перед заказом партии шлакоблоков.</p>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleFaq(this)">
+                        <span>Сколько шлакоблоков помещается в 1 м² и 1 м³ кладки?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>При стандартном размере 390×190×190 мм и толщине шва 10 мм:<br>
+                        • В 1 м² стены толщиной в полблока (19 см) входит <strong>12.5 блоков</strong>.<br>
+                        • В 1 м² стены толщиной в целый блок (39 см) входит <strong>25 блоков</strong>.<br>
+                        • В 1 м³ сплошной кладки входит ровно <strong>62.5 блока</strong>.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleFaq(this)">
+                        <span>Сколько блоков вмещает один деревянный поддон?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>На стандартный европоддон укладывается <strong>72 штуки</strong> стеновых блоков (вес поддона около 1.33 тонны) либо <strong>144 штуки</strong> перегородочных полублоков. Полнотелые фундаментные блоки укладываются по <strong>60 штук</strong> из-за большего веса.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleFaq(this)">
+                        <span>Как отличить заводской пропаренный блок от гаражного кустарного?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Кустарные блоки сушат на открытом солнце: они светлые, края крошатся пальцами, геометрия кривая (перепад до 1–2 см), при постукивании глухой звук. Заводской блок из камеры имеет равномерный серый цвет, четкие прямые углы, при ударе молотком издает звонкий звук и не колется.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleFaq(this)">
+                        <span>Нужна ли предоплата и как происходит оплата?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Для физических лиц при заказе стандартных объемов <strong>предоплата не требуется</strong>! Вы заказываете доставку, водитель привозит поддоны, вы проверяете качество и рассчитываетесь на месте наличными или переводом. Для юридических лиц доступна безналичная оплата с НДС/без НДС.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleFaq(this)">
+                        <span>Предоставляются ли скидки на опт?</span>
+                        <span class="accordion-icon">+</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Да! При заказе от 1 000 штук скидка 3%, от 3 000 штук — 5%, от 5 000 штук — специальная цена и льготный тариф на манипулятор.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- СЕКЦИЯ КОНТАКТОВ И ЗАЯВКИ -->
+    <section class="section section--contacts" id="contacts">
+        <div class="container">
+            <div class="contacts-grid">
+                <!-- ФОРМА ОБРАТНОЙ СВЯЗИ -->
+                <div class="contact-form-card">
+                    <div class="badge badge--yellow">ПЕРСОНАЛЬНЫЙ РАСЧЕТ</div>
+                    <h3>Оставьте заявку на поставку блоков</h3>
+                    <p>Менеджер цеха свяжется с вами в течение 10 минут, уточнит наличие и рассчитает доставку до вашего объекта.</p>
+
+                    <form id="leadForm" onsubmit="handleFormSubmit(event)">
+                        <div class="form-group">
+                            <label>Ваше имя:</label>
+                            <input type="text" id="leadName" placeholder="Иван Петров" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Номер телефона:</label>
+                            <input type="tel" id="leadPhone" placeholder="+7 (___) ___-__-__" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Что вас интересует:</label>
+                            <select id="leadProduct">
+                                <option value="Стеновые 4-х пустотные">Стеновые 4-х пустотные (390×190×190)</option>
+                                <option value="Стеновые 2-х пустотные">Стеновые 2-х пустотные (390×190×190)</option>
+                                <option value="Полнотелые фундаментные">Полнотелые фундаментные (390×190×190)</option>
+                                <option value="Перегородочные полублоки">Перегородочные полублоки (390×90×190)</option>
+                                <option value="Керамзитобетонные блоки">Керамзитобетонные блоки</option>
+                                <option value="Нужен расчет всего объекта">Нужен полный расчет по проекту</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Адрес или район доставки (или самовывоз):</label>
+                            <input type="text" id="leadAddress" placeholder="Например: п. Сосновый, ул. Лесная 12">
+                        </div>
+                        <button type="submit" class="btn btn--primary btn--full btn--lg">
+                            <span>Получить расчет и зафиксировать скидку</span>
+                        </button>
+                        <p class="form-privacy">Нажимая кнопку, вы соглашаетесь на обработку персональных данных. Мы не рассылаем спам.</p>
+                    </form>
+                </div>
+
+                <!-- КОНТАКТНЫЕ ДАННЫЕ -->
+                <div class="contacts-info-card">
+                    <span class="section-tag">ЦЕХ И СКЛАД ГОТОВОЙ ПРОДУКЦИИ</span>
+                    <h2>Приезжайте к нам на производство</h2>
+                    <p>Вы можете лично осмотреть образцы блоков, проверить геометрию штангенциркулем и оценить прочность перед покупкой.</p>
+
+                    <div class="contact-details">
+                        <div class="c-detail-item">
+                            <span class="c-icon">📍</span>
+                            <div>
+                                <strong>Адрес производства и склада:</strong>
+                                <p>г. Москва / МО, Промышленная зона «Западная», Заводской проезд, склад №4</p>
+                            </div>
+                        </div>
+
+                        <div class="c-detail-item">
+                            <span class="c-icon">🕒</span>
+                            <div>
+                                <strong>График отгрузки и работы:</strong>
+                                <p>Пн – Сб: с 08:00 до 20:00<br>Вс: по предварительной договоренности</p>
+                            </div>
+                        </div>
+
+                        <div class="c-detail-item">
+                            <span class="c-icon">📞</span>
+                            <div>
+                                <strong>Прямой телефон отдела сбыта:</strong>
+                                <p><a href="tel:+79991234567">+7 (999) 123-45-67</a> (многоканальный)</p>
+                            </div>
+                        </div>
+
+                        <div class="c-detail-item">
+                            <span class="c-icon">💬</span>
+                            <div>
+                                <strong>Мессенджеры для быстрой связи:</strong>
+                                <div class="messengers">
+                                    <a href="#" class="btn-msg btn-msg--wa">WhatsApp</a>
+                                    <a href="#" class="btn-msg btn-msg--tg">Telegram</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-placeholder">
+                        <div class="map-placeholder__inner">
+                            <span class="map-pin-icon">🏭</span>
+                            <h4>Цех шлакоблоков «МОНОЛИТ-БЛОК»</h4>
+                            <p>Удобный подъезд для длинномеров и газелей, бетонная площадка погрузки</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ПОДВАЛ (FOOTER) -->
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__col">
+                <div class="logo">
+                    <div class="logo__icon">
+                        <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+                            <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4h-6V6h6v2zm-8-2v2H5V6h6zm-6 4h6v2H5v-2zm8 0h6v2h-6v-2zm-8 4h6v2H5v-2zm8 0h6v2h-6v-2zm-8 4h6v2H5v-2zm8 0h6v2h-6v-2z"/>
+                        </svg>
+                    </div>
+                    <div class="logo__text">
+                        <span class="logo__title">МОНОЛИТ-БЛОК</span>
+                        <span class="logo__subtitle">ПРОИЗВОДСТВЕННЫЙ ЦЕХ</span>
+                    </div>
+                </div>
+                <p class="footer__about">
+                    Прямой производитель стеновых и перегородочных вибропрессованных шлакоблоков по ГОСТ 6133-99. Надежные поставки для частного и коммерческого строительства.
+                </p>
+                <p class="footer__copy">© 2026 Завод «МОНОЛИТ-БЛОК». Все права защищены.</p>
+            </div>
+
+            <div class="footer__col">
+                <h4 class="footer__heading">Продукция</h4>
+                <ul class="footer__links">
+                    <li><a href="#catalog">Стеновые 4-х пустотные</a></li>
+                    <li><a href="#catalog">Стеновые 2-х пустотные</a></li>
+                    <li><a href="#catalog">Полнотелые фундаментные</a></li>
+                    <li><a href="#catalog">Перегородочные полублоки</a></li>
+                    <li><a href="#catalog">Керамзитобетонные блоки</a></li>
+                    <li><a href="#catalog">Декоративные колотые блоки</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4 class="footer__heading">Навигация</h4>
+                <ul class="footer__links">
+                    <li><a href="#calculator">Калькулятор расчета</a></li>
+                    <li><a href="#advantages">Преимущества цеха</a></li>
+                    <li><a href="#production">Технология и ГОСТ</a></li>
+                    <li><a href="#delivery">Условия доставки</a></li>
+                    <li><a href="#reviews">Отзывы клиентов</a></li>
+                    <li><a href="#contacts">Склад и контакты</a></li>
+                </ul>
+            </div>
+
+            <div class="footer__col">
+                <h4 class="footer__heading">Служба сбыта</h4>
+                <p class="footer__contact-line"><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+                <p class="footer__contact-line"><strong>Почта:</strong> sbyt@monolit-block.ru</p>
+                <p class="footer__contact-line"><strong>Адрес:</strong> Промзона, Заводской проезд, 4</p>
+                <button class="btn btn--outline btn--sm" onclick="openModal('Заказ обратного звонка')">Заказать звонок</button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- МОДАЛЬНОЕ ОКНО БЫСТРОГО ЗАКАЗА -->
+    <div class="modal" id="orderModal">
+        <div class="modal__overlay" onclick="closeModal()"></div>
+        <div class="modal__box">
+            <button class="modal__close" onclick="closeModal()">&times;</button>
+            <div class="modal__header">
+                <div class="badge badge--yellow" id="modalBadge">БЫСТРЫЙ ЗАКАЗ</div>
+                <h3 class="modal__title" id="modalTitle">Оформление заявки</h3>
+                <p class="modal__subtitle" id="modalSubtitle">Заполните контактные данные, и мы свяжемся с вами в течение 10 минут для подтверждения.</p>
+            </div>
+            <form id="modalForm" onsubmit="handleModalSubmit(event)">
+                <input type="hidden" id="modalProductName" value="">
+                <input type="hidden" id="modalOrderSummary" value="">
+
+                <div class="modal__summary-box" id="modalSummaryBox" style="display: none;">
+                    <div class="modal-sum-title" id="modalSummaryTitle">Товар</div>
+                    <div class="modal-sum-details" id="modalSummaryDetails">Детали заказа</div>
+                </div>
+
+                <div class="form-group">
+                    <label>Ваше имя:</label>
+                    <input type="text" id="modalName" placeholder="Иван" required>
+                </div>
+                <div class="form-group">
+                    <label>Контактный телефон:</label>
+                    <input type="tel" id="modalPhone" placeholder="+7 (___) ___-__-__" required>
+                </div>
+                <div class="form-group">
+                    <label>Комментарий / Адрес доставки (необязательно):</label>
+                    <textarea id="modalComment" rows="2" placeholder="Укажите район доставки или желаемую дату"></textarea>
+                </div>
+                <button type="submit" class="btn btn--primary btn--full btn--lg">
+                    <span>Подтвердить заявку</span>
+                </button>
+                <p class="form-privacy text-center">Оплата только после получения и проверки товара на объекте.</p>
+            </form>
+        </div>
+    </div>
+
+    <!-- LIGHTBOX ДЛЯ ГАЛЕРЕИ -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+        <div class="lightbox__inner" onclick="event.stopPropagation()">
+            <button class="lightbox__close" onclick="closeLightbox()">×</button>
+            <button class="lightbox__nav lightbox__nav--prev" onclick="lightboxNav(-1)">&#8249;</button>
+            <button class="lightbox__nav lightbox__nav--next" onclick="lightboxNav(1)">&#8250;</button>
+            <div class="lightbox__media-wrap">
+                <img src="" alt="" class="lightbox__img" id="lightboxImg" style="display:none;">
+                <div class="lightbox__cert" id="lightboxCert" style="display:none;"></div>
+            </div>
+            <div class="lightbox__caption" id="lightboxCaption"></div>
+            <div class="lightbox__counter" id="lightboxCounter"></div>
+        </div>
+    </div>
+
+    <!-- ВСПЛЫВАЮЩЕЕ УВЕДОМЛЕНИЕ (TOAST) -->
+    <div class="toast" id="toast">
+        <div class="toast__icon">✓</div>
+        <div class="toast__content">
+            <h4 id="toastTitle">Заявка принята!</h4>
+            <p id="toastMessage">Мы свяжемся с вами в течение 10 минут.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
