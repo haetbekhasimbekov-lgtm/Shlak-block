@@ -2823,3 +2823,145 @@ body {
         grid-template-columns: 1fr;
     }
 }
+
+/* ==========================================================
+   МОБИЛЬНАЯ АДАПТАЦИЯ (MOBILE SMARTPHONES < 480PX)
+   ========================================================== */
+
+@media (max-width: 480px) {
+    /* Хедер */
+    .header__action .btn--outline {
+        display: none;
+    }
+    .header__inner {
+        padding: 0 10px;
+        gap: 6px;
+    }
+    .logo {
+        gap: 8px;
+    }
+    .logo__title {
+        font-size: 0.88rem;
+    }
+    .logo__subtitle {
+        font-size: 0.42rem;
+        letter-spacing: 0.05em;
+    }
+
+    /* Герой */
+    .hero {
+        padding: 30px 0 45px;
+    }
+    .hero__title {
+        font-size: 1.5rem;
+        line-height: 1.25;
+    }
+    .hero__desc {
+        font-size: 0.88rem;
+        line-height: 1.5;
+        margin-bottom: 24px;
+    }
+    .hero__stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+    }
+    .hero__stats .stat-divider {
+        display: none;
+    }
+    .hero__stats .stat-item {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-dark);
+        border-radius: var(--radius-md);
+        padding: 10px 8px;
+        text-align: center;
+    }
+    .hero__stats .stat-item__num {
+        font-size: 1.15rem;
+    }
+    .hero__stats .stat-item__label {
+        font-size: 0.7rem;
+    }
+
+    /* Фильтры каталога */
+    .catalog-filters {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+    .filter-btn {
+        width: 100%;
+        padding: 8px 6px;
+        font-size: 0.75rem;
+        border-radius: 8px;
+    }
+
+    /* Табы калькулятора */
+    .calc-tabs {
+        flex-direction: column;
+        gap: 6px;
+    }
+    .calc-tab {
+        width: 100%;
+        text-align: center;
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+
+    /* Спецификации в карточке */
+    .product-card__content {
+        padding: 16px 14px;
+    }
+    .spec-row span {
+        font-size: 0.78rem;
+    }
+    .spec-row strong {
+        font-size: 0.8rem;
+    }
+    .product-card__price .price-val {
+        font-size: 1.35rem;
+    }
+    .product-card__price .price-unit {
+        font-size: 0.72rem;
+    }
+
+    /* Смета калькулятора */
+    .result-row__name {
+        font-size: 0.82rem;
+    }
+    .result-row__val {
+        font-size: 0.88rem;
+    }
+    .result-total-label {
+        font-size: 0.88rem;
+    }
+    .result-total-val {
+        font-size: 1.45rem;
+    }
+
+    /* Модальное окно */
+    .modal__box {
+        padding: 20px 14px;
+        width: calc(100% - 16px);
+    }
+    .modal__close {
+        top: 10px;
+        right: 12px;
+    }
+
+    /* Таблица ГОСТ */
+    .specs-table th, .specs-table td {
+        padding: 8px 10px;
+        font-size: 0.78rem;
+    }
+
+    /* Галерея */
+    .gallery-tabs {
+        gap: 6px;
+    }
+    .gallery-tab {
+        padding: 6px 12px;
+        font-size: 0.78rem;
+    }
+}
+

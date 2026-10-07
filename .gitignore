@@ -1,0 +1,13 @@
+# OS & System files
+.DS_Store
+Thumbs.db
+*.tmp
+*.zip
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.swp
+
+# Temporary scratch
+scratch/
