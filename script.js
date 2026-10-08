@@ -402,14 +402,11 @@ function initMobileNav() {
     const nav = document.getElementById('mainNav');
 
     if (burger && nav) {
-        burger.addEventListener('click', () => {
-            nav.classList.toggle('open');
-            burger.classList.toggle('open');
-            if (nav.classList.contains('open')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
+        burger.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = nav.classList.toggle('open');
+            burger.classList.toggle('open', isOpen);
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
         nav.querySelectorAll('a').forEach(link => {
@@ -419,6 +416,24 @@ function initMobileNav() {
                 document.body.style.overflow = '';
             });
         });
+
+        // Закрытие при клике вне меню
+        document.addEventListener('click', (e) => {
+            if (nav.classList.contains('open') && !nav.contains(e.target) && !burger.contains(e.target)) {
+                nav.classList.remove('open');
+                burger.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Закрытие по клавише Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('open')) {
+                nav.classList.remove('open');
+                burger.classList.remove('open');
+                document.body.style.overflow = '';
+            }
+        });
     }
 }
 
@@ -426,6 +441,12 @@ function initMobileNav() {
    SCROLL REVEAL ANIMATIONS
    ========================================================== */
 function initScrollAnimations() {
+    // На экранах <= 992px все блоки гарантированно отображаются сразу
+    if (window.innerWidth <= 992) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+        return;
+    }
+
     const leftElements = document.querySelectorAll('.hero__content, .delivery-info, .contacts-info-card');
     leftElements.forEach(el => { el.classList.add('reveal', 'reveal-left'); });
 
@@ -443,22 +464,31 @@ function initScrollAnimations() {
 
     const observerOptions = {
         root: null,
-        rootMargin: '0px',
-        threshold: 0.15
+        rootMargin: '100px 0px 100px 0px',
+        threshold: 0.02
     };
 
-    const observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('active');
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
 
-    document.querySelectorAll('.reveal').forEach(el => {
-        observer.observe(el);
-    });
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+    } else {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('active'));
+    }
+
+    // Страховочный таймер: через 600мс все блоки 100% становятся активными и видимыми
+    setTimeout(() => {
+        document.querySelectorAll('.reveal:not(.active)').forEach(el => el.classList.add('active'));
+    }, 600);
 }
 
 if (document.readyState === 'loading') {
