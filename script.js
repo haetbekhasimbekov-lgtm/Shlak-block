@@ -1,5 +1,5 @@
 /**
- * МОНОЛИТ-БЛОК — СКРИПТЫ ВЗАИМОДЕЙСТВИЯ, КАЛЬКУЛЯТОР И МУЛЬТИЯЗЫЧНОСТЬ (RU / UZ)
+ * МОНОЛИТ-БЛОК — СКРИПТЫ ВЗАИМОДЕЙСТВИЯ, КАЛЬКУЛЯТОР И МУЛЬТИЯЗЫЧНОСТЬ (RU / KZ)
  */
 
 let currentLang = 'ru';
@@ -17,32 +17,32 @@ document.addEventListener('DOMContentLoaded', () => {
 const BLOCK_DATA = {
     wall4: {
         nameRu: 'Стеновой 4-х пустотный (390×190×190)',
-        nameUz: 'Devoriy 4 bo\'shliqli (390×190×190)',
+        nameKz: 'Қабырғалық 4 қуысты (390×190×190)',
         price: 195, weight: 18.5, pallet: 72, volume: 0.014
     },
     wall2: {
         nameRu: 'Стеновой 2-х пустотный (390×190×190)',
-        nameUz: 'Devoriy 2 bo\'shliqli (390×190×190)',
+        nameKz: 'Қабырғалық 2 қуысты (390×190×190)',
         price: 205, weight: 20.0, pallet: 72, volume: 0.014
     },
     solid: {
         nameRu: 'Полнотелый фундаментный (390×190×190)',
-        nameUz: 'To\'la poydevorli (390×190×190)',
+        nameKz: 'Тұтас іргетастық (390×190×190)',
         price: 275, weight: 26.0, pallet: 60, volume: 0.014
     },
     partition: {
         nameRu: 'Перегородочный полублок (390×90×190)',
-        nameUz: 'To\'siq yarim bloki (390×90×190)',
+        nameKz: 'Перделік жартылай блок (390×90×190)',
         price: 145, weight: 10.0, pallet: 144, volume: 0.0067
     },
     clay: {
         nameRu: 'Керамзитобетонный блок (390×190×190)',
-        nameUz: 'Keramzit-beton blok (390×190×190)',
+        nameKz: 'Керамзит-бетон блок (390×190×190)',
         price: 290, weight: 13.5, pallet: 72, volume: 0.014
     },
     decor: {
         nameRu: 'Декоративный рваный камень (390×190×190)',
-        nameUz: 'Dekorativ yirtiq tosh (390×190×190)',
+        nameKz: 'Сәндік жыртылған тас (390×190×190)',
         price: 325, weight: 21.0, pallet: 72, volume: 0.014
     }
 };
@@ -50,7 +50,7 @@ const BLOCK_DATA = {
 function getBlockName(key) {
     const b = BLOCK_DATA[key];
     if (!b) return key;
-    return currentLang === 'uz' ? b.nameUz : b.nameRu;
+    return currentLang === 'kz' ? b.nameKz : b.nameRu;
 }
 
 let currentCalcMode = 'walls';
@@ -147,14 +147,14 @@ function calculateBlocks() {
     const totalWeightTons = (totalWeightKg / 1000).toFixed(1);
     const totalVolumeM3 = (totalPieces * block.volume).toFixed(1);
 
-    const isUz = currentLang === 'uz';
+    const isKz = currentLang === 'kz';
 
-    let trucks = isUz ? '1 ta reys (5t)' : '1 рейс (5т)';
+    let trucks = isKz ? '1 рейс (5т)' : '1 рейс (5т)';
     if (totalWeightKg > 15000) {
         const trips = Math.ceil(totalWeightKg / 15000);
-        trucks = isUz ? `${trips} ta reys (15t)` : `${trips} рейса (15т)`;
+        trucks = isKz ? `${trips} рейс (15т)` : `${trips} рейса (15т)`;
     } else if (totalWeightKg > 5000) {
-        trucks = isUz ? '1 ta reys (10-12t)' : '1 рейс (10-12т)';
+        trucks = isKz ? '1 рейс (10-12т)' : '1 рейс (10-12т)';
     }
 
     let discountPercent = 0;
@@ -175,10 +175,10 @@ function calculateBlocks() {
     const resTrucks = document.getElementById('resTrucks');
     const resTotalPrice = document.getElementById('resTotalPrice');
 
-    if (resTotalBlocks) resTotalBlocks.textContent = `${formatNumber(totalPieces)} ${isUz ? 'dona' : 'шт.'}`;
-    if (resPallets) resPallets.textContent = `${pallets} ${isUz ? 'ta palet' : 'паллет'} (${block.pallet} ${isUz ? 'dona/poddon' : 'шт/поддон'})`;
-    if (resVolume) resVolume.textContent = `${totalVolumeM3} ${isUz ? 'm³' : 'м³'}`;
-    if (resWeight) resWeight.textContent = `${totalWeightTons} ${isUz ? 't' : 'т'}`;
+    if (resTotalBlocks) resTotalBlocks.textContent = `${formatNumber(totalPieces)} ${isKz ? 'дана' : 'шт.'}`;
+    if (resPallets) resPallets.textContent = `${pallets} ${isKz ? 'паллет' : 'паллет'} (${block.pallet} ${isKz ? 'дана/поддон' : 'шт/поддон'})`;
+    if (resVolume) resVolume.textContent = `${totalVolumeM3} ${isKz ? 'м³' : 'м³'}`;
+    if (resWeight) resWeight.textContent = `${totalWeightTons} ${isKz ? 'т' : 'т'}`;
     if (resTrucks) resTrucks.textContent = trucks;
     if (resTotalPrice) resTotalPrice.textContent = `${formatNumber(finalPrice)} ₸`;
 
@@ -188,11 +188,11 @@ function calculateBlocks() {
     if (discountPercent > 0) {
         if (discountBadge) {
             discountBadge.style.display = 'inline-block';
-            discountBadge.textContent = isUz ? `Hajm uchun chegirma: ${discountPercent}%` : `Скидка за объем: ${discountPercent}%`;
+            discountBadge.textContent = isKz ? `Көлем үшін жеңілдік: ${discountPercent}%` : `Скидка за объем: ${discountPercent}%`;
         }
         if (savingsEl) {
             savingsEl.style.display = 'block';
-            savingsEl.textContent = isUz ? `Sizning foydangiz: ${formatNumber(discountAmount)} ₸` : `Ваша выгода: ${formatNumber(discountAmount)} ₸`;
+            savingsEl.textContent = isKz ? `Сіздің пайдаңыз: ${formatNumber(discountAmount)} ₸` : `Ваша выгода: ${formatNumber(discountAmount)} ₸`;
         }
     } else {
         if (discountBadge) discountBadge.style.display = 'none';
@@ -259,19 +259,19 @@ function toggleFaq(headerBtn) {
    ========================================================== */
 
 function openModal(type = 'default', customSubtitle = null) {
-    const isUz = currentLang === 'uz';
-    let title = isUz ? 'Tezkor ariza' : 'Быстрая заявка';
-    let subtitle = isUz ? 'Telefon raqamingizni qoldiring, va sex texnologi 10 daqiqa ichida siz bilan bog\'lanadi.' : 'Оставьте номер телефона, и технолог цеха свяжется с вами в течение 10 минут.';
+    const isKz = currentLang === 'kz';
+    let title = isKz ? 'Жылдам өтінім' : 'Быстрая заявка';
+    let subtitle = isKz ? 'Телефон нөміріңізді қалдырыңыз, цех технологы 10 минут ішінде хабарласады.' : 'Оставьте номер телефона, и технолог цеха свяжется с вами в течение 10 минут.';
 
     if (type === 'consult') {
-        title = isUz ? 'Tezkor maslahat' : 'Быстрая консультация';
-        subtitle = isUz ? 'Telefon raqamingizni qoldiring, va mutaxassisimiz 10 daqiqada maslahat beradi.' : 'Оставьте номер телефона, и технолог цеха свяжется с вами в течение 10 минут.';
+        title = isKz ? 'Жылдам кеңес алу' : 'Быстрая консультация';
+        subtitle = isKz ? 'Телефон нөміріңізді қалдырыңыз, маманымыз 10 минутта кеңес береді.' : 'Оставьте номер телефона, и технолог цеха свяжется с вами в течение 10 минут.';
     } else if (type === 'delivery') {
-        title = isUz ? 'Yetkazib berish narxini hisoblash' : 'Расчет стоимости доставки';
-        subtitle = isUz ? 'Yetkazib berish manzilini ko\'rsating, va logist aniq narx va vaqtni hisoblab beradi:' : 'Укажите адрес доставки, и логист рассчитает точную стоимость и время прибытия:';
+        title = isKz ? 'Жеткізу құнын есептеу' : 'Расчет стоимости доставки';
+        subtitle = isKz ? 'Жеткізу мекенжайын көрсетіңіз, логист нақты бағасы мен уақытын есептейді:' : 'Укажите адрес доставки, и логист рассчитает точную стоимость и время прибытия:';
     } else if (type === 'callback') {
-        title = isUz ? 'Qayta qo\'ng\'iroqqa buyurtma' : 'Заказ обратного звонка';
-        subtitle = isUz ? 'Aloqa ma\'lumotlaringizni qoldiring, biz ish vaqtida qayta qo\'ng\'iroq qilamiz:' : 'Оставьте контактные данные, и мы перезвоним вам в ближайшее время:';
+        title = isKz ? 'Кері қоңырау тапсырысы' : 'Заказ обратного звонка';
+        subtitle = isKz ? 'Байланыс деректеріңізді қалдырыңыз, біз жақын арада хабарласамыз:' : 'Оставьте контактные данные, и мы перезвоним вам в ближайшее время:';
     } else if (typeof type === 'string' && type !== 'default') {
         title = type;
         if (customSubtitle) subtitle = customSubtitle;
@@ -286,25 +286,25 @@ function openModal(type = 'default', customSubtitle = null) {
 }
 
 function openOrderModal(productKeyOrName, price) {
-    const isUz = currentLang === 'uz';
+    const isKz = currentLang === 'kz';
     const productName = BLOCK_DATA[productKeyOrName] ? getBlockName(productKeyOrName) : productKeyOrName;
 
     const modal = document.getElementById('orderModal');
-    document.getElementById('modalTitle').textContent = isUz ? 'Shlakobloklarga buyurtma' : 'Заказ шлакоблоков';
-    document.getElementById('modalSubtitle').textContent = isUz 
-        ? 'Yetkazib berishni hisoblash uchun kerakli miqdor yoki manzilni ko\'rsating:' 
+    document.getElementById('modalTitle').textContent = isKz ? 'Шлакоблоктарға тапсырыс' : 'Заказ шлакоблоков';
+    document.getElementById('modalSubtitle').textContent = isKz 
+        ? 'Жеткізуді есептеу үшін қажетті мөлшерді немесе мекенжайды көрсетіңіз:' 
         : 'Укажите желаемое количество или адрес для расчета доставки:';
     
     const summaryBox = document.getElementById('modalSummaryBox');
     summaryBox.style.display = 'block';
     document.getElementById('modalSummaryTitle').textContent = productName;
-    document.getElementById('modalSummaryDetails').textContent = isUz
-        ? `Baza narxi: ${price} ₸ / dona. Omborda mavjud.`
+    document.getElementById('modalSummaryDetails').textContent = isKz
+        ? `Базалық бағасы: ${price} ₸ / дана. Қоймада бар.`
         : `Базовая стоимость: ${price} ₸ / шт. В наличии на складе.`;
     
     document.getElementById('modalProductName').value = productName;
-    document.getElementById('modalOrderSummary').value = isUz
-        ? `Mahsulot: ${productName}, Narx: ${price} tng.`
+    document.getElementById('modalOrderSummary').value = isKz
+        ? `Тауар: ${productName}, Бағасы: ${price} тңг.`
         : `Товар: ${productName}, Цена: ${price} тнг.`;
     modal.classList.add('active');
 }
@@ -313,27 +313,27 @@ function orderFromCalculator() {
     if (!lastCalcResult) {
         calculateBlocks();
     }
-    const isUz = currentLang === 'uz';
+    const isKz = currentLang === 'kz';
     const blockTitle = getBlockName(lastCalcResult.blockKey || selectedBlockType);
 
     const modal = document.getElementById('orderModal');
-    document.getElementById('modalTitle').textContent = isUz 
-        ? 'Kalkulyatordan narxni mahkamlash' 
+    document.getElementById('modalTitle').textContent = isKz 
+        ? 'Калькулятордан бағаны бекіту' 
         : 'Фиксация цены из калькулятора';
-    document.getElementById('modalSubtitle').textContent = isUz
-        ? 'Hisobingiz tayyor! Chegirma va bloklar zaxirasini raqamingizga biriktiring:'
+    document.getElementById('modalSubtitle').textContent = isKz
+        ? 'Есебіңіз дайын! Жеңілдік пен блоктар бронын нөміріңізге бекітіңіз:'
         : 'Ваш расчет готов! Закрепите скидку и бронь блоков за вашим номером:';
 
     const summaryBox = document.getElementById('modalSummaryBox');
     summaryBox.style.display = 'block';
     document.getElementById('modalSummaryTitle').textContent = blockTitle;
-    document.getElementById('modalSummaryDetails').textContent = isUz
-        ? `Hajm: ${formatNumber(lastCalcResult.pieces)} dona (${lastCalcResult.pallets} ta palet, ~${lastCalcResult.weight} t). Chegirma bilan jami: ${formatNumber(lastCalcResult.price)} ₸`
+    document.getElementById('modalSummaryDetails').textContent = isKz
+        ? `Көлемі: ${formatNumber(lastCalcResult.pieces)} дана (${lastCalcResult.pallets} паллет, ~${lastCalcResult.weight} т). Жеңілдікпен жиыны: ${formatNumber(lastCalcResult.price)} ₸`
         : `Объем: ${formatNumber(lastCalcResult.pieces)} шт. (${lastCalcResult.pallets} паллет, ~${lastCalcResult.weight} т). Итого со скидкой: ${formatNumber(lastCalcResult.price)} ₸`;
 
-    document.getElementById('modalProductName').value = isUz ? 'Kalkulyatordan buyurtma' : 'Заказ из калькулятора';
+    document.getElementById('modalProductName').value = isKz ? 'Калькулятордан тапсырыс' : 'Заказ из калькулятора';
     document.getElementById('modalOrderSummary').value = 
-        `Blok: ${blockTitle}, Dona: ${lastCalcResult.pieces}, Palet: ${lastCalcResult.pallets}, Summa: ${lastCalcResult.price} ₸`;
+        `Блок: ${blockTitle}, Дана: ${lastCalcResult.pieces}, Паллет: ${lastCalcResult.pallets}, Сомасы: ${lastCalcResult.price} ₸`;
 
     modal.classList.add('active');
 }
@@ -355,28 +355,28 @@ document.addEventListener('keydown', (e) => {
 
 function handleModalSubmit(e) {
     e.preventDefault();
-    const isUz = currentLang === 'uz';
+    const isKz = currentLang === 'kz';
     const name = document.getElementById('modalName').value;
     const phone = document.getElementById('modalPhone').value;
 
     closeModal();
     showToast(
-        isUz ? 'Ariza muvaffaqiyatli qabul qilindi!' : 'Заявка успешно принята!',
-        isUz ? `Rahmat, ${name}! Sex menejeri tasdiqlash uchun ${phone} raqamiga bog\'lanadi.` : `Спасибо, ${name}! Менеджер цеха свяжется с вами по номеру ${phone} для подтверждения.`
+        isKz ? 'Өтінім сәтті қабылданды!' : 'Заявка успешно принята!',
+        isKz ? `Рақмет, ${name}! Цех менеджері растау үшін ${phone} нөміріне хабарласады.` : `Спасибо, ${name}! Менеджер цеха свяжется с вами по номеру ${phone} для подтверждения.`
     );
     e.target.reset();
 }
 
 function handleFormSubmit(e) {
     e.preventDefault();
-    const isUz = currentLang === 'uz';
+    const isKz = currentLang === 'kz';
     const name = document.getElementById('leadName').value;
     const phone = document.getElementById('leadPhone').value;
     const product = document.getElementById('leadProduct').value;
 
     showToast(
-        isUz ? 'Ariza ro\'yxatga olindi!' : 'Заявка зарегистрирована!',
-        isUz ? `Rahmat, ${name}! «${product}» bo\'yicha hisob-kitob sotuv bo\'limiga yuborildi.` : `Спасибо, ${name}! Расчет по продукции «${product}» отправлен в отдел сбыта.`
+        isKz ? 'Өтінім тіркелді!' : 'Заявка зарегистрирована!',
+        isKz ? `Рақмет, ${name}! «${product}» бойынша есеп сату бөліміне жіберілді.` : `Спасибо, ${name}! Расчет по продукции «${product}» отправлен в отдел сбыта.`
     );
     e.target.reset();
 }
@@ -491,52 +491,52 @@ const GALLERY_DATA = [
         type: 'image',
         src: 'assets/images/gallery_house.jpg',
         captionRu: 'Коттедж 200 м² — 4 200 стеновых блоков М75',
-        captionUz: 'Kottedj 200 m² — 4 200 dona M75 devoriy blok'
+        captionKz: 'Коттедж 200 м² — 4 200 дана М75 қабырғалық блок'
     },
     {
         type: 'image',
         src: 'assets/images/gallery_garage.jpg',
         captionRu: 'Гараж-мастерская 18×9 м — 1 800 блоков 4-х пустотных',
-        captionUz: 'Garaj-ustaxona 18×9 m — 1 800 dona 4 bo\'shliqli blok'
+        captionKz: 'Гараж-шеберхана 18×9 м — 1 800 дана 4 қуысты блок'
     },
     {
         type: 'image',
         src: 'assets/images/gallery_factory.jpg',
         captionRu: 'Наш цех — автоматизированная вибропрессовая линия, 12 000 блоков/сутки',
-        captionUz: 'Bizning sex — avtomatlashtirilgan vibropress liniyasi, 12 000 blok/sutka'
+        captionKz: 'Біздің цех — автоматтандырылған вибропресс желісі, 12 000 блок/тәулік'
     },
     {
         type: 'image',
         src: 'assets/images/gallery_warehouse.jpg',
         captionRu: 'Логистический склад 1 200 м² — 14 000 полнотелых блоков М100',
-        captionUz: 'Logistika ombori 1 200 m² — 14 000 dona to\'la M100 blok'
+        captionKz: 'Логистикалық қойма 1 200 м² — 14 000 дана тұтас М100 блок'
     },
     {
         type: 'cert',
         icon: '📋',
         titleRu: 'Паспорт качества ГОСТ 6133-99',
-        titleUz: 'GOST 6133-99 sifat pasporti',
+        titleKz: 'ГОСТ 6133-99 сапа паспорты',
         descRu: 'Лабораторный протокол испытания на прочность, морозостойкость и геометрию каждой партии.',
-        descUz: 'Har bir partiya uchun mustahkamlik, sovuqqa chidamlilik va geometriyaga sinov laboratoriya bayonnomasi.',
+        descKz: 'Әрбір партияның беріктігіне, аязға шыдамдылығына және геометриясына зертханалық сынақ хаттамасы.',
         details: [
-            { labelRu: 'Марка прочности', labelUz: 'Mustahkamlik markasi', valueRu: 'М75 — М100', valueUz: 'M75 — M100' },
-            { labelRu: 'Морозостойкость', labelUz: 'Sovuqqa chidamlilik', valueRu: 'F50 (50 циклов)', valueUz: 'F50 (50 tsikl)' },
-            { labelRu: 'Геометрия (откл.)', labelUz: 'Geometriya (og\'ish)', valueRu: '±1 мм по ГОСТ', valueUz: '±1 mm GOST bo\'yicha' },
-            { labelRu: 'Выдан', labelUz: 'Berilgan', valueRu: 'ОТК завода №1', valueUz: 'Zavod OTK №1' }
+            { labelRu: 'Марка прочности', labelKz: 'Беріктік маркасы', valueRu: 'М75 — М100', valueKz: 'М75 — М100' },
+            { labelRu: 'Морозостойкость', labelKz: 'Аязға шыдамдылық', valueRu: 'F50 (50 циклов)', valueKz: 'F50 (50 цикл)' },
+            { labelRu: 'Геометрия (откл.)', labelKz: 'Геометрия (ауытқу)', valueRu: '±1 мм по ГОСТ', valueKz: 'ГОСТ бойынша ±1 мм' },
+            { labelRu: 'Выдан', labelKz: 'Берілген', valueRu: 'ОТК завода №1', valueKz: '№1 завод ТБК' }
         ]
     },
     {
         type: 'cert',
         icon: '🏆',
         titleRu: 'Сертификат соответствия',
-        titleUz: 'Muvofiqlik sertifikati',
+        titleKz: 'Сәйкестік сертификаты',
         descRu: 'Продукция прошла добровольную сертификацию в независимой аккредитованной лаборатории.',
-        descUz: 'Mahsulot mustaqil akkreditatsiyalangan laboratoriyada ixtiyoriy sertifikatsiyadan o\'tdi.',
+        descKz: 'Өнім тәуелсіз аккредиттелген зертханада ерікті сертификаттаудан өтті.',
         details: [
-            { labelRu: 'Стандарт', labelUz: 'Standart', valueRu: 'ГОСТ 6133-99', valueUz: 'GOST 6133-99' },
-            { labelRu: 'Область', labelUz: 'Soha', valueRu: 'Стеновые блоки', valueUz: 'Devoriy bloklar' },
-            { labelRu: 'Статус', labelUz: 'Status', valueRu: '✓ Действующий', valueUz: '✓ Amalda' },
-            { labelRu: 'Орган', labelUz: 'Organ', valueRu: 'Независимая лаб.', valueUz: 'Mustaqil laboratoriya' }
+            { labelRu: 'Стандарт', labelKz: 'Стандарт', valueRu: 'ГОСТ 6133-99', valueKz: 'ГОСТ 6133-99' },
+            { labelRu: 'Область', labelKz: 'Сала', valueRu: 'Стеновые блоки', valueKz: 'Қабырғалық блоктар' },
+            { labelRu: 'Статус', labelKz: 'Мәртебесі', valueRu: '✓ Действующий', valueKz: '✓ Жарамды' },
+            { labelRu: 'Орган', labelKz: 'Орган', valueRu: 'Независимая лаб.', valueKz: 'Тәуелсіз зертхана' }
         ]
     }
 ];
@@ -589,10 +589,10 @@ function renderLightbox() {
 
     if (data.type === 'image') {
         imgEl.src = data.src;
-        imgEl.alt = lang === 'ru' ? data.captionRu : data.captionUz;
+        imgEl.alt = lang === 'ru' ? data.captionRu : data.captionKz;
         imgEl.style.display = 'block';
         certEl.style.display = 'none';
-        captionEl.textContent = lang === 'ru' ? data.captionRu : data.captionUz;
+        captionEl.textContent = lang === 'ru' ? data.captionRu : data.captionKz;
     } else {
         imgEl.style.display = 'none';
         certEl.style.display = 'block';
@@ -600,15 +600,15 @@ function renderLightbox() {
 
         const detailsHtml = data.details.map(d => `
             <div class="cert-detail-row">
-                <span>${lang === 'ru' ? d.labelRu : d.labelUz}</span>
-                <strong>${lang === 'ru' ? d.valueRu : d.valueUz}</strong>
+                <span>${lang === 'ru' ? d.labelRu : d.labelKz}</span>
+                <strong>${lang === 'ru' ? d.valueRu : d.valueKz}</strong>
             </div>
         `).join('');
 
         certEl.innerHTML = `
             <div class="cert-icon-big">${data.icon}</div>
-            <h3>${lang === 'ru' ? data.titleRu : data.titleUz}</h3>
-            <p>${lang === 'ru' ? data.descRu : data.descUz}</p>
+            <h3>${lang === 'ru' ? data.titleRu : data.titleKz}</h3>
+            <p>${lang === 'ru' ? data.descRu : data.descKz}</p>
             <div class="lightbox__cert-details">${detailsHtml}</div>
         `;
     }
@@ -623,7 +623,7 @@ document.addEventListener('keydown', (e) => {
 });
 
 /* ==========================================================
-   ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА (UZ / RU) — СЛОВАРЬ И ЛОГИКА
+   ПЕРЕКЛЮЧАТЕЛЬ ЯЗЫКА (KZ / RU) — СЛОВАРЬ И ЛОГИКА
    ========================================================== */
 
 const TRANSLATIONS = {
@@ -908,289 +908,289 @@ const TRANSLATIONS = {
         "modal-ph-comment": "Укажите район доставки или желаемую дату",
         "modal-btn": "<span>Подтвердить заявку</span>",
         "modal-privacy": "Оплата только после получения и проверки товара на объекте."
-},
-    uz: {
-        "top-address": "📍 Sanoat zonasi, Zavod yo'li, 4-ombor (Dush–Shan: 08:00–20:00)",
-        "top-stock": "<span class=\"pulse-dot\"></span> <span>Omborda mavjud: <strong>65 000+ blok</strong> jo'natishga tayyor</span>",
-        "top-callback": "Qo'ng'iroq buyurtma qilish",
-        "logo-title": "MONOLIT-BLOK",
-        "logo-subtitle": "1-SONLI ISHLAB CHIQARISH SEXI",
-        "nav-catalog": "Mahsulotlar",
-        "nav-calc": "Kalkulyator",
-        "nav-advantages": "Afzalliklar",
-        "nav-production": "Ishlab chiqarish",
-        "nav-delivery": "Yetkazib berish",
-        "nav-reviews": "Sharhlar",
-        "nav-contacts": "Kontaktlar",
-        "header-btn-calc": "Narxni hisoblash",
-        "hero-badge": "<span class=\"badge__dot\"></span> To'g'ridan-to'g'ri ishlab chiqaruvchi • Vositachilarsiz",
-        "hero-title": "GOST shlakobloklari ishlab chiqarish <br><span class=\"text-gradient\">manipulyator bilan yetkazib berish</span> buyurtma kunida",
-        "hero-desc": "M75–M100 markali, mukammal geometriyaga ega (og'ish 1 mm gacha) devoriy, to'siq va mustahkamlangan bloklar. To'liq tsiklli bug'lash kamerasi, 100% loyiha mustahkamligi. To'lov ob'ektda yuk tushirilgandan so'ng.",
-        "hero-btn-calc": "<span>Narxni onlayn hisoblash</span> <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg>",
-        "hero-btn-catalog": "Katalog va narxlarni ko'rish",
-        "hero-stat1-num": "190 ₸ dan",
-        "hero-stat1-lbl": "Ulgurji narx (dona)",
-        "hero-stat2-lbl": "Sertifikatlangan mustahkamlik",
-        "hero-stat3-num": "12 000 donagacha",
-        "hero-stat3-lbl": "Sex kunlik quvvati",
-        "hero-stat4-lbl": "To'lov faqat qabul qilinganda",
-        "hero-preview-tag": "Omborda 65 000 dona mavjud",
-        "hero-preview-title": "Devoriy 4 bo'shliqli M75",
-        "hero-preview-dims": "390 × 190 × 190 mm • Og'irligi: 18.5 kg",
-        "hero-preview-curprice": "195 ₸ / dona",
-        "hero-preview-order": "Buyurtma berish",
-        "adv-tag": "NEGA BIZNING SEXNI TANLASHADI",
-        "adv-title": "Obro'yimiz bilan kafolatlaydigan sifat",
-        "adv-subtitle": "Biz qo'lbola ishlab chiqarish emasmiz — bug'lash kameralari va o'z laboratoriyasiga ega avtomatlashtirilgan liniyada ishlaymiz.",
-        "adv-c1-title": "Mukammal geometriya (±1 mm)",
-        "adv-c1-desc": "160 tonnalik quvvat bilan vibropressda qoliplash. Tekis qirralar qorishma sarfini 40% tejaydi va g'isht teruvchilar ishini 2 baravar tezlashtiradi.",
-        "adv-c2-title": "70°C bug'lash kamerasi",
-        "adv-c2-desc": "Bloklar issiq bug'da 24 soat ichida loyiha mustahkamligining 75% ini oladi. Uvalanmaydi, uqalanmaydi va yetkazilgandan so'ng darhol terishga tayyor.",
-        "adv-c3-title": "PTs-500 D0 markali sement",
-        "adv-c3-desc": "Faqat shlak aralashmasiz toza sement va 0-5 mm fraktsiyali granit tosh ishlatamiz. Har bir partiyaga sifat pasporti va sertifikatlar beriladi.",
-        "adv-c4-title": "O'z manipulyatorlar parki",
-        "adv-c4-desc": "Gidromanipulyatorli 5 ta o'z yuk mashinamiz bor (strelasi 3 t gacha, kuzov 10-20 t). Ob'ektingiz poydevorigacha ehtiyotkorlik bilan tushirib beramiz.",
-        "adv-c5-title": "Haqiqiy hajm va siniqlarsiz",
-        "adv-c5-desc": "Streych-plyonka va mustahkam lenta bilan yog'och tagliklarga (poddon) qadoqlash. Agar tushirish paytida bitta blok sinsa ham — o'z hisobimizdan almashtiramiz.",
-        "adv-c6-title": "Qabul qilganda to'lov",
-        "adv-c6-desc": "Jismoniy shaxslar uchun yashirin to'lovlar yoki oldindan to'lov yo'q. Sifat va sonini joyida tekshirasiz, so'ng naqd yoki karta orqali to'laysiz.",
-        "calc-badge": "30 SONIYADA ANIQ HISOBLASH",
-        "calc-title": "Shlakobloklar va narxni hisoblash kalkulyatori",
-        "calc-subtitle": "Bloklarning aniq soni, tagliklar soni, yetkazib berish og'irligi va hajm bo'yicha chegirma bilan yakuniy summani hisoblang.",
-        "calc-step1-lbl": "1. Blok turini tanlang:",
-        "calc-t1-title": "Devoriy 4 bo'shliqli",
-        "calc-t1-sub": "390×190×190 mm • 195 ₸/dona",
-        "calc-t2-title": "Devoriy 2 bo'shliqli",
-        "calc-t2-sub": "390×190×190 mm • 205 ₸/dona",
-        "calc-t3-title": "To'la mustahkamlangan",
-        "calc-t3-sub": "390×190×190 mm • 275 ₸/dona",
-        "calc-t4-title": "To'siq uchun yarim blok",
-        "calc-t4-sub": "390×90×190 mm • 145 ₸/dona",
-        "calc-step2-lbl": "2. Hisoblash usuli:",
-        "calc-tab-walls": "Devor o'lchamlari bo'yicha (bino)",
-        "calc-tab-qty": "Dona soni bo'yicha",
-        "calc-len-lbl": "Devorlarning umumiy uzunligi (m):",
-        "calc-len-hint": "Masalan, 10×10 m uy = 40 m",
-        "calc-h-lbl": "Devor balandligi (m):",
-        "calc-h-hint": "Standart 2.8 - 3.0 m",
-        "calc-thick-lbl": "Terish qalinligi:",
-        "calc-thick-opt1": "Yarim blok (190 mm) — yordamchi binolar, garaj, devorlar uchun",
-        "calc-thick-opt2": "1 blok (390 mm) — issiq uylar, omborlar uchun",
-        "calc-open-lbl": "Deraza va eshiklar maydoni (m²):",
-        "calc-open-hint": "Devor hajmidan ayirib tashlanadi",
-        "calc-margin-lbl": "Kesish va sinish uchun 5% zaxira (ustalar tavsiya etadi)",
-        "calc-qty-lbl": "Kerakli bloklar soni (dona):",
-        "calc-qty-hint": "Sizga kerakli bloklar miqdorini ko'rsating",
-        "calc-step3-lbl": "3. Yetkazib berish:",
-        "calc-del-opt1-title": "Sex manipulyatori (tushirish bilan)",
-        "calc-del-opt1-sub": "Shahar va viloyat bo'yicha, logist tomonidan aniq hisob",
-        "calc-del-opt2-title": "Sex omboridan olib ketish (o'zi olib ketish)",
-        "calc-del-opt2-sub": "Poddonlarda yuklagich bilan bepul yuklab berish",
-        "calc-res-title": "Smeta va buyurtma parametrlari",
-        "calc-res-lbl-blocks": "Bloklar soni:",
-        "calc-res-lbl-pallets": "Tagliklar (poddon) soni:",
-        "calc-res-lbl-volume": "Umumiy terish hajmi:",
-        "calc-res-lbl-weight": "Taxminiy yuk og'irligi:",
-        "calc-res-lbl-trucks": "Kerakli transport:",
-        "calc-res-lbl-total": "Yakuniy qiymati:",
-        "calc-res-btn": "<span>Chegirmali narxni mahkamlash</span> <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg>",
-        "calc-res-note": "🔒 Narxni mahkamlash 14 kun amal qiladi. Oldindan to'lov yo'q!",
-        "cat-tag": "MAHSULOTLAR TURI",
-        "cat-title": "Ishlab chiqaruvchidan shlakobloklar katalogi",
-        "cat-subtitle": "Barcha mahsulotlar GOST 6133-99 talablariga qat'iy muvofiq yarim quruq hajmiy vibropresslash usulida ishlab chiqarilgan.",
-        "cat-filter-all": "Barcha blok turlari",
-        "cat-filter-wall": "Devoriy (390×190×190)",
-        "cat-filter-part": "To'siq (390×90×190)",
-        "cat-filter-heavy": "Poydevor va kuchaytirilgan",
-        "btn-order": "Buyurtma berish",
-        "card1-badge": "ENG KO'P SOTILGAN",
-        "card1-title": "Devoriy 4 bo'shliqli shlakoblok",
-        "card2-badge": "OPTIMAL",
-        "card2-title": "Devoriy 2 bo'shliqli shlakoblok",
-        "card3-badge": "YUQORI MUSTAHKAMLIK",
-        "card3-title": "To'la poydevor shlakobloki",
-        "card4-badge": "TO'SIQLAR UCHUN",
-        "card4-title": "To'siq shlakobloki (yarim blok)",
-        "card5-badge": "ISSIQ",
-        "card5-title": "Keramzit-betonli issiq blok",
-        "card6-badge": "ESTETIKA",
-        "card6-title": "Dekorativ «Yirtiq tosh» bloki",
-        "spec-lbl-size": "O'lchami:",
-        "spec-lbl-strength": "Mustahkamlik markasi:",
-        "spec-lbl-hollow": "Bo'shliqligi:",
-        "spec-lbl-weight": "Blok og'irligi:",
-        "spec-lbl-pallet": "Poddonda:",
-        "spec-lbl-frost": "Sovuqqa chidamliligi:",
-        "spec-lbl-sound": "Shovqin izolyatsiyasi:",
-        "spec-lbl-thermal": "Issiqlik o'tkazuvchanligi:",
-        "spec-lbl-eco": "Ekologik tozaligi:",
-        "spec-lbl-texture": "Fakturasi:",
-        "spec-lbl-purpose": "Mo'ljallanishi:",
-        "spec-lbl-colors": "Ranglar:",
-        "spec-v-hollow30": "30% (issiqlik tejovchi)",
-        "spec-v-hollow40": "40% (qalin devorlar)",
-        "spec-v-hollow0": "0% (monolit)",
-        "spec-v-hollow2": "2 tirqishli bo'shliq",
-        "spec-v-pallet72": "72 dona (1 332 kg)",
-        "spec-v-pallet72-2": "72 dona (1 440 kg)",
-        "spec-v-pallet60": "60 dona (1 560 kg)",
-        "spec-v-pallet144": "144 dona (1 440 kg)",
-        "spec-v-pallet72-c": "72 dona (972 kg)",
-        "spec-v-frost50": "F50 (50 tsikldan)",
-        "spec-v-sound-hi": "Yuqori (48 dB gacha)",
-        "spec-v-eco-clay": "100% tabiiy loy",
-        "spec-v-texture-stone": "Qirqilgan old yuzasi",
-        "spec-v-purp-found": "Tsokollar, poydevorlar, ustunlar",
-        "spec-v-purp-fence": "Devorlar, tsokol, fasadlar",
-        "spec-v-colors": "Kulrang, grafit, shokolad",
-        "unit-pallet-14040": "/ dona (14040 ₸/poddon)",
-        "unit-pallet-14760": "/ dona (14760 ₸/poddon)",
-        "unit-pallet-16500": "/ dona (16500 ₸/poddon)",
-        "unit-pallet-20880": "/ dona (20880 ₸/poddon)",
-        "unit-pallet-23400": "/ dona (23400 ₸/poddon)",
-        "table-tag": "TEXNIK MA'LUMOTLAR",
-        "table-title": "GOST 6133-99 bo'yicha bloklar xususiyatlarini taqqoslash",
-        "table-subtitle": "Zavodimizning har bir partiyasi laboratoriya sinovlarining rasmiy ko'rsatkichlari.",
-        "th-type": "Blok turi",
-        "th-dims": "O'lchamlari (mm)",
-        "th-hollow": "Bo'shliqligi",
-        "th-strength": "Mustahkamlik markasi",
-        "th-frost": "Sovuqqa chidamliligi",
-        "th-weight": "Og'irligi (kg)",
-        "th-pallet": "Poddonda (dona)",
-        "tb-row1-type": "Devoriy 4 bo'shliqli",
-        "tb-row2-type": "Devoriy 2 bo'shliqli",
-        "tb-row3-type": "To'la poydevorli",
-        "tb-row3-hollow": "0% (yaxlit)",
-        "tb-row4-type": "To'siq (yarim blok)",
-        "tb-row5-type": "Keramzit-beton devoriy",
-        "prod-tag": "SEX TEXNOLOGIYASI",
-        "prod-title": "Biz qanday qilib ishonchli bloklar ishlab chiqaramiz",
-        "prod-subtitle": "To'g'ri vibropresslash texnologiyasiga uyingiz 70 yil yoriqlarsiz turishi bog'liq.",
-        "prod-banner-badge": "TO'LIQ TSIKLLI SEX",
-        "prod-banner-title": "«BLOCKMASTER» avtomatlashtirilgan vibropress liniyasi",
-        "prod-banner-desc": "Sement, suv va fraktsion to'ldiruvchini kompyuter orqali dozalash inson omilini bartaraf qiladi.",
-        "prod-step1-title": "Xomashyoni tayyorlash",
-        "prod-step1-desc": "Yuvilgan granit tosh 0-5 mm va portlandsement M500. Loy va chiqindilarsiz qattiq aralashma.",
-        "prod-step2-title": "Vibropresslash",
-        "prod-step2-desc": "Maksimal zichlik uchun yuqori chastotali tebranish bilan 160 atmosfera bosimi ostida matritsada presslash.",
-        "prod-step3-title": "Bug'lash kamerasi",
-        "prod-step3-desc": "70°C haroratda bug' bilan termonamlik bilan ishlov berish. Blok 28 kun o'rniga 24 soatda loyiha mustahkamligiga erishadi.",
-        "prod-step4-title": "OTK nazorati va ombor",
-        "prod-step4-desc": "Diagonallarni o'lchash, pressda sinov, ehtiyotkor yetkazib berish uchun evropoddonlarga streych-plyonkada qadoqlash.",
-        "del-tag": "O'Z AVTOPARKI",
-        "del-title": "Buyurtma kunida manipulyator bilan tez yetkazib berish",
-        "del-subtitle": "Poddonlarni to'g'ridan-to'g'ri qurilish maydonchangizga tushiramiz yoki ikkinchi qavat orayopmasiga ko'tarib beramiz.",
-        "del-perk1-title": "5t, 10t va 20t li manipulyatorlar",
-        "del-perk1-desc": "Tor ko'chalar yoki yirik qurilish ob'ektlari uchun mos mashinani tanlaymiz.",
-        "del-perk2-title": "Strela bilan ehtiyotkor tushirish",
-        "del-perk2-desc": "Samosval kabi ag'darish yo'q — bloklar sinmaydi va tirnalmaydi.",
-        "del-perk3-title": "Haftasiga 6 kun olib ketish imkoni",
-        "del-perk3-desc": "Avtoyuklagich bilan 15 daqiqada bepul va tez yuklab berish.",
-        "del-cta-text": "Aholi punktigacha yetkazib berishning aniq narxini bilib oling:",
-        "del-cta-btn": "Yetkazib berishni hisoblash",
-        "truck1-badge": "KICHIK MANIPULYATOR",
-        "truck1-title": "KAMAZ / ISUZU (5 tonnagacha)",
-        "truck1-cap": "Sig'imi: <strong>250 blokgacha (3–4 poddon)</strong>",
-        "truck1-desc": "Qo'shimcha binolar, garajlar, devorlar va tor yo'llar uchun ideal.",
-        "truck2-badge": "ENG TALABGIR",
-        "truck2-title": "MAZ / KAMAZ (10–12 tonnagacha)",
-        "truck2-cap": "Sig'imi: <strong>650 blokgacha (8–9 poddon)</strong>",
-        "truck2-desc": "Uyning 1-qavati yoki xo'jalik bloki qurilishi uchun maqbul.",
-        "truck3-badge": "OG'IR MANIPULYATOR",
-        "truck3-title": "UZUN O'LCHAMLI (20–25 tonnagacha)",
-        "truck3-cap": "Sig'imi: <strong>1 300 blokgacha (18 poddon)</strong>",
-        "truck3-desc": "Katta qurilishlar va minimal tarif bo'yicha ulgurji yetkazib berish uchun.",
-        "rev-tag": "HAQIQIY TAJRIBA",
-        "rev-title": "Quruvchilar va buyurtmachilar nima deydi",
-        "rev-subtitle": "Sexning 7 yillik faoliyati davomida 1 200 dan ortiq qurilgan ob'ektlar.",
-        "rev1-author": "Aleksey Novikov",
-        "rev1-role": "Qurilish brigadasi prorabi",
-        "rev1-text": "«Ushbu sexdan ketma-ket uchinchi mavsum olyapmiz. Asosiy afzalligi — geometriya. Choklar 8 mm gacha tekis chiqadi, qorishma minimal sarflanadi. Bloklar baquvvat, ko'chirganda sinmaydi. Manipulyator haydovchisi poddonlarni poydevor perimetriga juda ustalik bilan qo'yib berdi.»",
-        "rev1-object": "Ob'ekt: Kottedj 160 m² (2 800 blok)",
-        "rev2-author": "Bahrom Karimov",
-        "rev2-role": "Xususiy quruvchi",
-        "rev2-text": "«Mansardali garaj qurayotgan edim. Ertalab soat 9 da qo'ng'iroq qildim, menejer kalkulyatordan o'lchamlar bo'yicha hisoblashga yordam berdi. Soat 14:00 da mashina hovlimda tushirayotgan edi. Haydovchiga ko'rib chiqqach to'ladim. Bloklar yangi, taqillatganda jaranglaydi, mustahkamligi a'lo!»",
-        "rev2-object": "Ob'ekt: Garaj 7x9 m (950 blok)",
-        "rev3-author": "Sergey Vasilev",
-        "rev3-role": "Ombor majmuasi bosh pudratchisi",
-        "rev3-text": "«To'la va 4 bo'shliqli bloklarning katta partiyasiga (14 000 dona) buyurtma bergan edik. Sex grafigini kundan-kunga aniq bajardi. Sifat pasportlari va sinov bayonnomalarini taqdim etishdi. Poddonlarda birorta ham siniq yo'q. Ishonchli to'g'ridan-to'g'ri ishlab chiqaruvchi sifatida tavsiya qilaman.»",
-        "rev3-object": "Ob'ekt: Angar-ombor 450 m² (14 000 blok)",
-        "faq-tag": "SAVOLLAR VA JAVOBLAR",
-        "faq-title": "Ko'p beriladigan savollar",
-        "faq-subtitle": "Shlakobloklar partiyasiga buyurtma berishdan oldin bilish kerak bo'lgan hamma narsa.",
-        "faq-q1": "1 m² va 1 m³ terishda nechta shlakoblok ketadi?",
-        "faq-a1": "Standart 390×190×190 mm o'lcham va 10 mm chok qalinligida:<br>• Yarim blok qalinligidagi (19 sm) devorning 1 m² maydoniga <strong>12.5 ta blok</strong> ketadi.<br>• Butun blok qalinligidagi (39 sm) devorning 1 m² maydoniga <strong>25 ta blok</strong> ketadi.<br>• 1 m³ yaxlit devor terishga roppa-rosa <strong>62.5 ta blok</strong> ketadi.",
-        "faq-q2": "Bitta yog'och taglikka (poddon) nechta blok sig'adi?",
-        "faq-a2": "Standart evropoddonga <strong>72 dona</strong> devoriy blok joylashadi (poddon og'irligi taxminan 1.33 tonna) yoki <strong>144 dona</strong> to'siq yarim bloklari. To'la poydevor bloklari esa og'irligi sababli <strong>60 donadan</strong> taxlanadi.",
-        "faq-q3": "Zavodda bug'langan blokni qo'lbola blokdan qanday ajratish mumkin?",
-        "faq-a3": "Qo'lbola bloklar ochiq quyoshda quritiladi: rangi ochiq, chetlari barmoq bilan ushlaganda uqalanadi, geometriyasi qiyshiq (1–2 sm gacha farq), taqillatganda bo'g'iq tovush chiqaradi. Kameradan chiqqan zavod bloki bir tekis kulrang tusga, aniq to'g'ri burchaklarga ega bo'ladi, bolg'a bilan urganda jarangdor tovush beradi va parchalanib ketmaydi.",
-        "faq-q4": "Oldindan to'lov kerakmi va to'lov qanday amalga oshiriladi?",
-        "faq-a4": "Jismoniy shaxslar uchun standart hajmdagi buyurtmalarda <strong>oldindan to'lov talab qilinmaydi</strong>! Siz yetkazib berishga buyurtma berasiz, haydovchi poddonlarni keltiradi, sifatni tekshirasiz va joyida naqd yoki o'tkazma orqali hisob-kitob qilasiz. Yuridik shaxslar uchun QQS bilan/QQSsiz naqdsiz to'lov mavjud.",
-        "faq-q5": "Ulgurji narxlar uchun chegirmalar bormi?",
-        "faq-a5": "Ha! 1 000 donadan ortiq buyurtmada 3% chegirma, 3 000 donadan — 5%, 5 000 donadan esa — maxsus narx va manipulyatorga imtiyozli tarif beriladi.",
-        "cnt-form-badge": "SHAXSIY HISOBLASH",
-        "cnt-form-title": "Bloklar yetkazib berishga ariza qoldiring",
-        "cnt-form-desc": "Sex menejeri 10 daqiqa ichida siz bilan bog'lanadi, mavjudligini aniqlaydi va ob'ektingizgacha yetkazib berishni hisoblab beradi.",
-        "cnt-lbl-name": "Ismingiz:",
-        "cnt-ph-name": "Azizbek Karimov",
-        "cnt-lbl-phone": "Telefon raqamingiz:",
-        "cnt-lbl-prod": "Sizni nima qiziqtirmoqda:",
-        "cnt-opt-wall4": "Devoriy 4 bo'shliqli (390×190×190)",
-        "cnt-opt-wall2": "Devoriy 2 bo'shliqli (390×190×190)",
-        "cnt-opt-solid": "To'la poydevorli (390×190×190)",
-        "cnt-opt-part": "To'siq yarim bloklari (390×90×190)",
-        "cnt-opt-clay": "Keramzit-beton bloklar",
-        "cnt-opt-all": "Loyiha bo'yicha to'liq hisob kerak",
-        "cnt-lbl-addr": "Yetkazib berish manzili yoki tumani (yoki olib ketish):",
-        "cnt-ph-addr": "Masalan: Mirzo Ulug'bek tumani, Bog'bonlar ko'chasi 12",
-        "cnt-btn-submit": "<span>Hisob-kitobni olish va cheginputni saqlash</span>",
-        "cnt-privacy": "Tugmani bosish orqali siz shaxsiy ma'lumotlarni qayta ishlashga rozilik bildirasiz. Biz spam tarqatmaymiz.",
-        "cnt-info-tag": "TAYYOR MAHSULOTLAR SEXI VA OMBORI",
-        "cnt-info-title": "Ishlab chiqarishimizga tashrif buyuring",
-        "cnt-info-desc": "Xarid qilishdan oldin blok namunalarini shaxsan ko'rishingiz, shtangensirkul bilan geometriyasini va mustahkamligini tekshirishingiz mumkin.",
-        "cnt-lbl-work-addr": "Ishlab chiqarish va ombor manzili:",
-        "cnt-val-work-addr": "Sanoat zonasi, Zavod yo'li, 4-ombor",
-        "cnt-lbl-hours": "Yuklash va ish grafigi:",
-        "cnt-val-hours": "Dush – Shan: 08:00 dan 20:00 gacha<br>Yak: oldindan kelishuv bo'yicha",
-        "cnt-lbl-sales-phone": "Sotuv bo'limining to'g'ridan-to'g'ri telefoni:",
-        "cnt-phone-multi": "(ko'p kanalli)",
-        "cnt-lbl-messengers": "Tezkor aloqa uchun messenjerlar:",
-        "cnt-map-title": "«MONOLIT-BLOK» shlakoblok sexi",
-        "cnt-map-desc": "Uzun o'lchamli mashina va Gazellar uchun qulay yo'l, betonli yuklash maydonchasi",
-        "ft-about": "GOST 6133-99 bo'yicha devoriy va to'siq vibropresslangan shlakobloklarning to'g'ridan-to'g'ri ishlab chiqaruvchisi. Xususiy va tijorat qurilishi uchun ishonchli yetkazib berish.",
-        "ft-copy": "© 2026 «MONOLIT-BLOK» zavodi. Barcha huquqlar himoyalangan.",
-        "ft-h-prod": "Mahsulotlar",
-        "ft-p1": "Devoriy 4 bo'shliqli",
-        "ft-p2": "Devoriy 2 bo'shliqli",
-        "ft-p3": "To'la poydevorli",
-        "ft-p4": "To'siq yarim bloklari",
-        "ft-p5": "Keramzit-beton bloklar",
-        "ft-p6": "Dekorativ tosh bloklar",
-        "ft-h-nav": "Navigatsiya",
-        "ft-n1": "Hisoblash kalkulyatori",
-        "ft-n2": "Sex afzalliklari",
-        "ft-n3": "Texnologiya va GOST",
-        "ft-n4": "Yetkazib berish shartlari",
-        "ft-n5": "Mijozlar sharhlari",
-        "ft-n6": "Ombor va kontaktlar",
-        "ft-h-sales": "Sotuv bo'limi",
-        "ft-lbl-phone": "Telefon:",
-        "ft-lbl-email": "Elektron pochta:",
-        "ft-lbl-addr": "Manzil:",
-        "ft-val-addr": "Sanoat zonasi, Zavod yo'li, 4",
-        "ft-btn-call": "Qo'ng'iroq buyurtma qilish",
-        "modal-badge": "TEZKOR BUYURTMA",
-        "modal-title": "Arizani rasmiylashtirish",
-        "modal-subtitle": "Aloqa ma'lumotlaringizni to'ldiring, va biz 10 daqiqa ichida tasdiqlash uchun bog'lanamiz.",
-        "modal-lbl-name": "Ismingiz:",
-        "modal-ph-name": "Azizbek",
-        "modal-lbl-phone": "Aloqa telefoni:",
-        "modal-lbl-comment": "Izoh / Yetkazib berish manzili (ixtiyoriy):",
-        "modal-ph-comment": "Yetkazib berish tumani yoki kerakli sanani ko'rsating",
-        "modal-btn": "<span>Arizani tasdiqlash</span>",
-        "modal-privacy": "To'lov faqat ob'ektda tovar qabul qilib tekshirilgandan so'ng."
-}
+    },
+    kz: {
+        "top-address": "📍 Өнеркәсіп аймағы, Заводской өткелі, №4 қойма (Дүй–Сен: 08:00–20:00)",
+        "top-stock": "<span class=\"pulse-dot\"></span> <span>Қоймада бар: <strong>65 000+ блок</strong> тиеп-жөнелтуге дайын</span>",
+        "top-callback": "Қоңырауға тапсырыс беру",
+        "logo-title": "МОНОЛИТ-БЛОК",
+        "logo-subtitle": "№1 ӨНДІРІСТІК ЦЕХ",
+        "nav-catalog": "Өнімдер",
+        "nav-calc": "Калькулятор",
+        "nav-advantages": "Артықшылықтар",
+        "nav-production": "Өндіріс",
+        "nav-delivery": "Жеткізу",
+        "nav-reviews": "Пікірлер",
+        "nav-contacts": "Байланыс",
+        "header-btn-calc": "Бағаны есептеу",
+        "hero-badge": "<span class=\"badge__dot\"></span> Тікелей өндіруші • Делдалдарсыз",
+        "hero-title": "ГОСТ бойынша шлакоблоктар өндірісі <br><span class=\"text-gradient\">тапсырыс берген күні манипулятормен жеткізу</span>",
+        "hero-desc": "Мінсіз геометриясы бар (ауытқуы 1 мм-ге дейін) М75–М100 маркалы қабырғалық, перделік және нығайтылған блоктар. Толық циклды булау камерасы, 100% маркалық беріктік. Төлем объектіде жүк түсірілгеннен кейін.",
+        "hero-btn-calc": "<span>Құнын онлайн есептеу</span> <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg>",
+        "hero-btn-catalog": "Каталог пен бағаларды қарау",
+        "hero-stat1-num": "190 ₸ бастап",
+        "hero-stat1-lbl": "Донбай (көтерме) бағасы",
+        "hero-stat2-lbl": "Сертификатталған беріктік",
+        "hero-stat3-num": "12 000 данаға дейін",
+        "hero-stat3-lbl": "Цехтың тәуліктік қуаттылығы",
+        "hero-stat4-lbl": "Төлем тек алған кезде",
+        "hero-preview-tag": "Қоймада 65 000 дана бар",
+        "hero-preview-title": "Қабырғалық 4 қуысты М75",
+        "hero-preview-dims": "390 × 190 × 190 мм • Салмағы: 18.5 кг",
+        "hero-preview-curprice": "195 ₸ / дана",
+        "hero-preview-order": "Тапсырыс беру",
+        "adv-tag": "НЕГЕ БІЗДІҢ ЦЕХТЫ ТАҢДАЙДЫ",
+        "adv-title": "Абыройымызбен жауап беретін сапа",
+        "adv-subtitle": "Біз қолдан жасалған өндіріс емеспіз — булау камералары мен өз зертханасы бар автоматтандырылған желіде жұмыс істейміз.",
+        "adv-c1-title": "Мінсіз геометрия (±1 мм)",
+        "adv-c1-desc": "160 тонна күшпен вибропресте пішіндеу. Тегіс қырлары қалау ерітіндісін 40%-ға дейін үнемдейді және тас қалаушылардың жұмысын 2 есе жылдамдатады.",
+        "adv-c2-title": "70°C булау камерасы",
+        "adv-c2-desc": "Блоктар ыстық буда 24 сағат ішінде жобалық беріктіктің 75%-ын алады. Олар үгітілмейді, шірімейді және жеткізілгеннен кейін бірден қалауға дайын.",
+        "adv-c3-title": "ПЦ-500 Д0 маркалы цемент",
+        "adv-c3-desc": "Тек шлак қоспасыз таза цемент пен 0-5 мм фракциялы гранит қиыршықтасын пайдаланамыз. Әрбір партияға сапа паспорты мен сертификаттар беріледі.",
+        "adv-c4-title": "Жеке манипуляторлар автопаркі",
+        "adv-c4-desc": "Гидроманипуляторлары бар 5 жеке жүк көлігіміз бар (жебе жүк көтергіштігі 3 т-ға дейін, шанақ 10-20 т). Объектіңіздің іргетасына дейін ұқыпты түсіріп береміз.",
+        "adv-c5-title": "Шынайы көлем және сынықсыз",
+        "adv-c5-desc": "Стретч-үлбірмен және бекіту таспасымен ағаш поддондарға орау. Егер жүк түсіру кезінде бірде-бір блок сынса — өз есебімізден ауыстырамыз.",
+        "adv-c6-title": "Төлем тек алған кезде",
+        "adv-c6-desc": "Жеке тұлғалар үшін ешқандай жасырын төлемдер немесе алдын ала төлемдер жоқ. Орнында сапасы мен санын тексересіз, содан кейін қолма-қол немесе картамен төлейсіз.",
+        "calc-badge": "30 СЕКУНДТА НАҚТЫ ЕСЕПТЕУ",
+        "calc-title": "Шлакоблоктар мен бағасын есептеу калькуляторы",
+        "calc-subtitle": "Блоктардың нақты санын, поддондар санын, жеткізу салмағын және көлемдік жеңілдікпен соңғы соманы есептеңіз.",
+        "calc-step1-lbl": "1. Блок түрін таңдаңыз:",
+        "calc-t1-title": "Қабырғалық 4 қуысты",
+        "calc-t1-sub": "390×190×190 мм • 195 ₸/дана",
+        "calc-t2-title": "Қабырғалық 2 қуысты",
+        "calc-t2-sub": "390×190×190 мм • 205 ₸/дана",
+        "calc-t3-title": "Тұтас нығайтылған",
+        "calc-t3-sub": "390×190×190 мм • 275 ₸/дана",
+        "calc-t4-title": "Перделік жартылай блок",
+        "calc-t4-sub": "390×90×190 мм • 145 ₸/дана",
+        "calc-step2-lbl": "2. Есептеу әдісі:",
+        "calc-tab-walls": "Қабырға өлшемдері бойынша (ғимарат)",
+        "calc-tab-qty": "Дана саны бойынша",
+        "calc-len-lbl": "Қабырғалардың жалпы ұзындығы (м):",
+        "calc-len-hint": "Мысалы, 10×10 м үй = 40 м",
+        "calc-h-lbl": "Қабырғалардың биіктігі (м):",
+        "calc-h-hint": "Стандартты 2.8 - 3.0 м",
+        "calc-thick-lbl": "Қалау қалыңдығы:",
+        "calc-thick-opt1": "Жартылай блок (190 мм) — шаруашылық құрылыстары, гараждар, қоршаулар үшін",
+        "calc-thick-opt2": "1 блок (390 мм) — жылы үйлер, қоймалар үшін",
+        "calc-open-lbl": "Терезелер мен есіктер ауданы (м²):",
+        "calc-open-hint": "Қабырға көлемінен шегеріледі",
+        "calc-margin-lbl": "Қию мен сыныққа 5% қор (шеберлер ұсынады)",
+        "calc-qty-lbl": "Кажетті блоктар саны (дана):",
+        "calc-qty-hint": "Сізге қажетті блоктар санын көрсетіңіз",
+        "calc-step3-lbl": "3. Жеткізу:",
+        "calc-del-opt1-title": "Цех манипуляторы (түсірумен)",
+        "calc-del-opt1-sub": "Қала және облыс бойынша, логист нақты есептейді",
+        "calc-del-opt2-title": "Цех қоймасынан өзі алып кету",
+        "calc-del-opt2-sub": "Поддондарда тиегішпен тегін тиеп беру",
+        "calc-res-title": "Смета және тапсырыс параметрлері",
+        "calc-res-lbl-blocks": "Блоктар саны:",
+        "calc-res-lbl-pallets": "Поддондар саны:",
+        "calc-res-lbl-volume": "Қалаудың жалпы көлемі:",
+        "calc-res-lbl-weight": "Жүктің шамамен салмағы:",
+        "calc-res-lbl-trucks": "Көлік қажеттілігі:",
+        "calc-res-lbl-total": "Соңғы құны:",
+        "calc-res-btn": "<span>Жеңілдікті бағаны бекіту</span> <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M5 12h14M12 5l7 7-7 7\"/></svg>",
+        "calc-res-note": "🔒 Бағаны бекіту 14 күн бойы жарамды. Алдын ала төлемсіз!",
+        "cat-tag": "ӨНІМДЕР АССОРТИМЕНТІ",
+        "cat-title": "Өндірушіден шлакоблоктар каталогы",
+        "cat-subtitle": "Барлық өнімдер ГОСТ 6133-99 талаптарына қатаң сәйкестікте жартылай құрғақ көлемдік вибропрестеу әдісімен жасалған.",
+        "cat-filter-all": "Блоктардың барлық түрлері",
+        "cat-filter-wall": "Қабырғалық (390×190×190)",
+        "cat-filter-part": "Перделік (390×90×190)",
+        "cat-filter-heavy": "Іргетастық және нығайтылған",
+        "btn-order": "Тапсырыс беру",
+        "card1-badge": "ХИТ ӨНІМ",
+        "card1-title": "Қабырғалық 4 қуысты шлакоблок",
+        "card2-badge": "ОҢТАЙЛЫ",
+        "card2-title": "Қабырғалық 2 қуысты шлакоблок",
+        "card3-badge": "ЖОҒАРЫ БЕРІКТІК",
+        "card3-title": "Тұтас іргетастық шлакоблок",
+        "card4-badge": "ПЕРДЕЛЕР ҮШІН",
+        "card4-title": "Перделік шлакоблок (жартылай блок)",
+        "card5-badge": "ЖЫЛЫ",
+        "card5-title": "Керамзит-бетон жылы блок",
+        "card6-badge": "ЭСТЕТИКА",
+        "card6-title": "Сәндік «Жыртылған тас» блогы",
+        "spec-lbl-size": "Өлшемі:",
+        "spec-lbl-strength": "Беріктік маркасы:",
+        "spec-lbl-hollow": "Қуыстылығы:",
+        "spec-lbl-weight": "Блок салмағы:",
+        "spec-lbl-pallet": "Поддонда:",
+        "spec-lbl-frost": "Аязға шыдамдылығы:",
+        "spec-lbl-sound": "Шу оқшаулауы:",
+        "spec-lbl-thermal": "Жылу өткізгіштігі:",
+        "spec-lbl-eco": "Экологиялылығы:",
+        "spec-lbl-texture": "Фактурасы:",
+        "spec-lbl-purpose": "Мақсаты:",
+        "spec-lbl-colors": "Түстері:",
+        "spec-v-hollow30": "30% (жылу сақтағыш)",
+        "spec-v-hollow40": "40% (қалың қабырғалар)",
+        "spec-v-hollow0": "0% (монолитті)",
+        "spec-v-hollow2": "2 саңылаулы қуыс",
+        "spec-v-pallet72": "72 дана (1 332 кг)",
+        "spec-v-pallet72-2": "72 дана (1 440 кг)",
+        "spec-v-pallet60": "60 дана (1 560 кг)",
+        "spec-v-pallet144": "144 дана (1 440 кг)",
+        "spec-v-pallet72-c": "72 дана (972 кг)",
+        "spec-v-frost50": "F50 (50 циклдан бастап)",
+        "spec-v-sound-hi": "Жоғары (48 дБ дейін)",
+        "spec-v-eco-clay": "100% табиғи саз",
+        "spec-v-texture-stone": "Жарылған беткі қыры",
+        "spec-v-purp-found": "Цокольдар, іргетастар, тіреулер",
+        "spec-v-purp-fence": "Қоршаулар, цокольдар, қасбеттер",
+        "spec-v-colors": "Сұр, графит, шоколад",
+        "unit-pallet-14040": "/ дана (14040 ₸/поддон)",
+        "unit-pallet-14760": "/ дана (14760 ₸/поддон)",
+        "unit-pallet-16500": "/ дана (16500 ₸/поддон)",
+        "unit-pallet-20880": "/ дана (20880 ₸/поддон)",
+        "unit-pallet-23400": "/ дана (23400 ₸/поддон)",
+        "table-tag": "ТЕХНИКАЛЫҚ ДЕРЕКТЕР",
+        "table-title": "ГОСТ 6133-99 бойынша блоктар сипаттамаларын салыстыру",
+        "table-subtitle": "Заводіміздің әрбір партиясының зертханалық сынақтарының ресми көрсеткіштері.",
+        "th-type": "Блок түрі",
+        "th-dims": "Өлшемдері (мм)",
+        "th-hollow": "Қуыстылығы",
+        "th-strength": "Беріктік маркасы",
+        "th-frost": "Аязға шыдамдылығы",
+        "th-weight": "Салмағы (кг)",
+        "th-pallet": "Поддонда (дана)",
+        "tb-row1-type": "Қабырғалық 4 қуысты",
+        "tb-row2-type": "Қабырғалық 2 қуысты",
+        "tb-row3-type": "Тұтас іргетастық",
+        "tb-row3-hollow": "0% (тұтас)",
+        "tb-row4-type": "Перделік (жартылай блок)",
+        "tb-row5-type": "Керамзит-бетон қабырғалық",
+        "prod-tag": "ЦЕХ ТЕХНОЛОГИЯСЫ",
+        "prod-title": "Бiз сенімді блоктарды қалай өндіреміз",
+        "prod-subtitle": "Дұрыс вибропрестеу технологиясына үйіңіздің 70 жыл бойы жарықсыз тұруы байланысты.",
+        "prod-banner-badge": "ТОЛЫҚ ЦИКЛДЫ ЦЕХ",
+        "prod-banner-title": "«BLOCKMASTER» автоматтандырылған вибропрестеу желісі",
+        "prod-banner-desc": "Цемент, су және фракциялық толтырғышты компьютерлік дозалау адам факторын жояды.",
+        "prod-step1-title": "Шикізатты дайындау",
+        "prod-step1-desc": "Жуылған гранит қиыршықтасы 0-5 мм және портландцемент М500. Сазсыз және қоқыссыз қатаң қоспа.",
+        "prod-step2-title": "Вибропрестеу",
+        "prod-step2-desc": "Максималды тығыздық үшін жоғары жиілікті тербеліспен 160 атмосфера қысымы астында матрицада престеу.",
+        "prod-step3-title": "Булау камерасы",
+        "prod-step3-desc": "70°C температурада бумен термоылғалды өңдеу. Блок 28 күннің орнына 24 сағатта маркалық беріктікке жетеді.",
+        "prod-step4-title": "ТБК бақылауы және қойма",
+        "prod-step4-desc": "Диагональдарды өлшеу, престе сынау, ұқыпты жеткізу үшін европоддондарға стретч-үлбірге орау.",
+        "del-tag": "ЖЕКЕ АВТОПАРК",
+        "del-title": "Тапсырыс берген күні манипулятормен жылдам жеткізу",
+        "del-subtitle": "Поддондарды тікелей құрылыс алаңыңызға түсіреміз немесе екінші қабат жабынына көтеріп береміз.",
+        "del-perk1-title": "5т, 10т және 20т манипуляторлар",
+        "del-perk1-desc": "Тар көшелер немесе ірі құрылыс объектілері үшін қолайлы көлікті таңдаймыз.",
+        "del-perk2-title": "Жебемен ұқыпты түсіру",
+        "del-perk2-desc": "Самосвалмен аударып тастау жоқ — блоктар сынбайды және сызылмайды.",
+        "del-perk3-title": "Аптасына 6 күн өзі алып кету",
+        "del-perk3-desc": "Ашалы тиегішпен 15 минут ішінде тегін әрі жылдам тиеп беру.",
+        "del-cta-text": "Елді мекеніңізге дейін жеткізудің нақты құнын біліңіз:",
+        "del-cta-btn": "Жеткізуді есептеу",
+        "truck1-badge": "ШАҒЫН МАНИПУЛЯТОР",
+        "truck1-title": "КАМАЗ / ISUZU (5 тоннаға дейін)",
+        "truck1-cap": "Сыйымдылығы: <strong>250 блокқа дейін (3–4 поддон)</strong>",
+        "truck1-desc": "Қосымша құрылыстар, гараждар, қоршаулар және тар өткелдер үшін өте қолайлы.",
+        "truck2-badge": "ЕҢ КӨП СҰРАНЫСҚА ИЕ",
+        "truck2-title": "МАЗ / КАМАЗ (10–12 тоннаға дейін)",
+        "truck2-cap": "Сыйымдылығы: <strong>650 блокқа дейін (8–9 поддон)</strong>",
+        "truck2-desc": "Үйдің 1-қабатын немесе шаруашылық блогын салу үшін оңтайлы.",
+        "truck3-badge": "АУЫР МАНИПУЛЯТОР",
+        "truck3-title": "ҰЗЫН ӨЛШЕМДІ (20–25 тоннаға дейін)",
+        "truck3-cap": "Сыйымдылығы: <strong>1 300 блокқа дейін (18 поддон)</strong>",
+        "truck3-desc": "Ауқымды құрылыстар мен ең төменгі тариф бойынша көтерме жеткізілімдер үшін.",
+        "rev-tag": "ШЫНАЙЫ ТӘЖІРИБЕ",
+        "rev-title": "Құрылысшылар мен тапсырыс берушілер не дейді",
+        "rev-subtitle": "Цех жұмыс істеген 7 жыл ішінде 1 200-ден астам салынған объектілер.",
+        "rev1-author": "Алексей Новиков",
+        "rev1-role": "Құрылыс бригадасының прорабы",
+        "rev1-text": "«Осы цехтан қатарынан үшінші маусым алып жатырмыз. Негізгі артықшылығы — геометриясы. Жіктер 8 мм-ге дейін тегіс шығады, ерітінді минималды кетеді. Блоктар берік, тасымалдағанда сынбайды. Манипулятор жүргізушісі поддондарды іргетас периметріне өте шебер қойып берді.»",
+        "rev1-object": "Объект: Коттедж 160 м² (2 800 блок)",
+        "rev2-author": "Бахром Каримов",
+        "rev2-role": "Жеке құрылысшы",
+        "rev2-text": "«Мансардасы бар гараж салдым. Таңғы 9-да қоңырау шалдым, менеджер калькулятор арқылы өлшемдер бойынша есептеуге көмектесті. Сағат 14:00-де машина ауламда жүк түсіріп жатты. Жүргізушіге тексергеннен кейін төледім. Блоктар жаңа, ұрғанда сыңғырлайды, беріктігі өте жақсы!»",
+        "rev2-object": "Объект: Гараж 7х9 м (950 блок)",
+        "rev3-author": "Сергей Васильев",
+        "rev3-role": "Қойма кешенінің бас мердігері",
+        "rev3-text": "«Тұтас және 4 қуысты блоктардың үлкен партиясына (14 000 дана) тапсырыс бердік. Цех кестені дәлме-дәл орындады. Сапа паспорттары мен сынақ хаттамаларын қоса берді. Поддондарда ешқандай сынық жоқ. Сенімді тікелей өндіруші ретінде ұсынамын.»",
+        "rev3-object": "Объект: Ангар-қойма 450 м² (14 000 блок)",
+        "faq-tag": "СҰРАҚТАР МЕН ЖАУАПТАР",
+        "faq-title": "Жиі қойылатын сұрақтар",
+        "faq-subtitle": "Шлакоблоктар партиясына тапсырыс бермес бұрын білу керек барлық нәрсе.",
+        "faq-q1": "1 м² және 1 м³ қалауға қанша шлакоблок кетеді?",
+        "faq-a1": "Стандартты 390×190×190 мм өлшемде және 10 мм жік қалыңдығында:<br>• Жартылай блок қалыңдығындағы (19 см) қабырғаның 1 м² ауданына <strong>12.5 блок</strong> кіреді.<br>• Тұтас блок қалыңдығындағы (39 см) қабырғаның 1 м² ауданына <strong>25 блок</strong> кіреді.<br>• 1 м³ тұтас қалауға тура <strong>62.5 блок</strong> кіреді.",
+        "faq-q2": "Бiр ағаш поддонға қанша блок сыяды?",
+        "faq-a2": "Стандартты европоддонға <strong>72 дана</strong> қабырғалық блок сыяды (поддон салмағы шамамен 1.33 тонна) немесе <strong>144 дана</strong> перделік жартылай блоктар. Тұтас іргетастық блоктар салмағының үлкендігіне байланысты <strong>60 данадан</strong> жиналады.",
+        "faq-q3": "Заводтық буланған блокты қолдан жасалған блоктан қалай ажыратуға болады?",
+        "faq-a3": "Қолдан жасалған блоктар ашық күнде кептіріледі: олар ақшыл, шеттері саусақпен үгітіледі, геометриясы қисық (1–2 см-ге дейін айырмашылық), ұрғанда саңырау дыбыс шығарады. Камерадан шыққан заводтық блок біркелкі сұр түске, анық тік бұрыштарға ие болады, балғамен ұрғанда сыңғырлаған дыбыс шығарады және жарылмайды.",
+        "faq-q4": "Алдын ала төлем қажет пе және төлем қалай жүзеге асырылады?",
+        "faq-a4": "Жеке тұлғалар үшін стандартты көлемдегі тапсырыстарда <strong>алдын ала төлем талап етілмейді</strong>! Сіз жеткізуге тапсырыс бересіз, жүргізуші поддондарды әкеледі, сапасын тексересіз және орнында қолма-қол немесе аударым арқылы есептесесіз. Заңды тұлғалар үшін ҚҚС-пен/ҚҚС-сыз қолма-қолсыз төлем бар.",
+        "faq-q5": "Көтерме саудаға жеңілдіктер қарастырылған ба?",
+        "faq-a5": "Иә! 1 000 данадан бастап тапсырыс бергенде 3% жеңілдік, 3 000 данадан — 5%, 5 000 данадан бастап — арнайы баға және манипуляторға жеңілдікті тариф беріледі.",
+        "cnt-form-badge": "ЖЕКЕ ЕСЕПТЕУ",
+        "cnt-form-title": "Блоктарды жеткізуге өтінім қалдырыңыз",
+        "cnt-form-desc": "Цех менеджері 10 минут ішінде сізбен хабарласып, бар-жоғын анықтайды және объектіңізге дейін жеткізуді есептейді.",
+        "cnt-lbl-name": "Сіздің атыңыз:",
+        "cnt-ph-name": "Асқар Нұрланов",
+        "cnt-lbl-phone": "Телефон нөміріңіз:",
+        "cnt-lbl-prod": "Сізді не қызықтырады:",
+        "cnt-opt-wall4": "Қабырғалық 4 қуысты (390×190×190)",
+        "cnt-opt-wall2": "Қабырғалық 2 қуысты (390×190×190)",
+        "cnt-opt-solid": "Тұтас іргетастық (390×190×190)",
+        "cnt-opt-part": "Перделік жартылай блоктар (390×90×190)",
+        "cnt-opt-clay": "Керамзит-бетон блоктар",
+        "cnt-opt-all": "Жоба бойынша толық есеп керек",
+        "cnt-lbl-addr": "Жеткізу мекенжайы немесе ауданы (немесе өзі алып кету):",
+        "cnt-ph-addr": "Мысалы: Абай даңғылы 45",
+        "cnt-btn-submit": "<span>Есепті алу және жеңілдікті бекіту</span>",
+        "cnt-privacy": "Түймені басу арқылы сіз жеке деректерді өңдеуге келісесіз. Біз спам жібермейміз.",
+        "cnt-info-tag": "ДАЙЫН ӨНІМДЕР ЦЕХЫ ЖӘНЕ ҚОЙМАСЫ",
+        "cnt-info-title": "Өндірісімізге келіп өтіңіз",
+        "cnt-info-desc": "Сатып алмас бұрын блок үлгілерін жеке тексере аласыз, штангенциркульмен геометриясын және беріктігін бағалай аласыз.",
+        "cnt-lbl-work-addr": "Өндіріс пен қойма мекенжайы:",
+        "cnt-val-work-addr": "Өнеркәсіп аймағы, Заводской өткелі, №4 қойма",
+        "cnt-lbl-hours": "Тиеу және жұмыс кестесі:",
+        "cnt-val-hours": "Дүй – Сен: 08:00-ден 20:00-ге дейін<br>Жек: алдын ала келісім бойынша",
+        "cnt-lbl-sales-phone": "Сату бөлімінің тікелей телефоны:",
+        "cnt-phone-multi": "(көп арналы)",
+        "cnt-lbl-messengers": "Жылдам байланыс үшін мессенджерлер:",
+        "cnt-map-title": "«МОНОЛИТ-БЛОК» шлакоблок цехы",
+        "cnt-map-desc": "Ұзын өлшемді көліктер мен Газельдер үшін қоршалған ыңғайлы кіру жолы, бетонды тиеу алаңы",
+        "ft-about": "ГОСТ 6133-99 бойынша қабырғалық және перделік вибропрестелген шлакоблоктардың тікелей өндірушісі. Жеке және коммерциялық құрылыс үшін сенімді жеткізілімдер.",
+        "ft-copy": "© 2026 «МОНОЛИТ-БЛОК» заводы. Барлық құқықтар қорғалған.",
+        "ft-h-prod": "Өнімдер",
+        "ft-p1": "Қабырғалық 4 қуысты",
+        "ft-p2": "Қабырғалық 2 қуысты",
+        "ft-p3": "Тұтас іргетастық",
+        "ft-p4": "Перделік жартылай блоктар",
+        "ft-p5": "Керамзит-бетон блоктар",
+        "ft-p6": "Сәндік жарылған тастар",
+        "ft-h-nav": "Навигация",
+        "ft-n1": "Есептеу калькуляторы",
+        "ft-n2": "Цех артықшылықтары",
+        "ft-n3": "Технология және ГОСТ",
+        "ft-n4": "Жеткізу шарттары",
+        "ft-n5": "Клиенттер пікірлері",
+        "ft-n6": "Қойма және байланыс",
+        "ft-h-sales": "Сату қызметі",
+        "ft-lbl-phone": "Телефон:",
+        "ft-lbl-email": "Пошта:",
+        "ft-lbl-addr": "Мекенжайы:",
+        "ft-val-addr": "Өнеркәсіп аймағы, Заводской өткелі, 4",
+        "ft-btn-call": "Қоңырауға тапсырыс беру",
+        "modal-badge": "ЖЫЛДАМ ТАПСЫРЫС",
+        "modal-title": "Өтінімді рәсімдеу",
+        "modal-subtitle": "Байланыс деректерін толтырыңыз, біз растау үшін 10 минут ішінде хабарласамыз.",
+        "modal-lbl-name": "Сіздің атыңыз:",
+        "modal-ph-name": "Арман",
+        "modal-lbl-phone": "Байланыс телефоны:",
+        "modal-lbl-comment": "Түсініктеме / Жеткізу мекенжайы (міндетті емес):",
+        "modal-ph-comment": "Жеткізу ауданын немесе қалаған күнді көрсетіңіз",
+        "modal-btn": "<span>Өтінімді растау</span>",
+        "modal-privacy": "Төлем тек объектіде тауарды алғаннан және тексергеннен кейін."
+    }
 };
 
 function switchLang(lang) {
@@ -1198,17 +1198,17 @@ function switchLang(lang) {
 
     // 1. Переключение кнопок в шапке
     const btnRU = document.getElementById('langRU');
-    const btnUZ = document.getElementById('langUZ');
+    const btnKZ = document.getElementById('langKZ');
     if (btnRU) btnRU.classList.toggle('active', lang === 'ru');
-    if (btnUZ) btnUZ.classList.toggle('active', lang === 'uz');
+    if (btnKZ) btnKZ.classList.toggle('active', lang === 'kz');
 
     // 2. Обновление атрибута lang на html
     const htmlRoot = document.getElementById('htmlRoot') || document.documentElement;
     htmlRoot.lang = lang;
 
     // 3. Заголовок страницы
-    if (lang === 'uz') {
-        document.title = 'MONOLIT-BLOK | GOST shlakobloklari ishlab chiqarish zavodi va sexi';
+    if (lang === 'kz') {
+        document.title = 'МОНОЛИТ-БЛОК | ГОСТ шлакоблоктарын өндіру зауыты мен цехы';
     } else {
         document.title = 'МОНОЛИТ-БЛОК | Завод и цех по производству шлакоблоков ГОСТ';
     }
@@ -1230,9 +1230,9 @@ function switchLang(lang) {
         }
     });
 
-    // 6. Поддержка элементов с data-ru / data-uz (например, галерея)
-    document.querySelectorAll('[data-ru][data-uz]').forEach(el => {
-        const val = lang === 'ru' ? el.getAttribute('data-ru') : el.getAttribute('data-uz');
+    // 6. Поддержка элементов с data-ru / data-kz
+    document.querySelectorAll('[data-ru]').forEach(el => {
+        const val = lang === 'ru' ? el.getAttribute('data-ru') : (el.getAttribute('data-kz') || el.getAttribute('data-uz'));
         if (val !== null) {
             el.textContent = val;
         }
@@ -1257,8 +1257,8 @@ function initSavedLanguage() {
         saved = localStorage.getItem('siteLang') || localStorage.getItem('sitelang') || 'ru';
     } catch (e) {}
 
-    if (saved === 'uz') {
-        switchLang('uz');
+    if (saved === 'kz' || saved === 'uz') {
+        switchLang('kz');
     } else {
         switchLang('ru');
     }
